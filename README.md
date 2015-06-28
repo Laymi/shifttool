@@ -1,2 +1,2 @@
 # shifttool
-Shifttool for coordinating the student initiatives at WHU
+Shifttool for coordinating the student initiatives at WHU.
