@@ -1,0 +1,48 @@
+@import "header.import.less";
+@import "footer.import.less";
+@import "typography.import.less";
+@import "spinkit.import.less";
+@import "helpers.import.less";
+
+@import "pages/home.import.less";
+@import "pages/profile.import.less";
+@import "pages/earn_credits.import.less";
+@import "pages/survey_add.import.less";
+
+/*****************************************************************************/
+
+@primaryColor:       #00628B;
+@darkPrimaryColor:   #0D47A1;
+@lightPrimaryColor:  #42A5F5;
+@accentColor:        #1E88E5;
+@primaryTextColor:   #212121;
+@secondaryTextColor: #727272;
+@dividerColor:       #B6B6B6;
+
+.primaryColor {
+  background-color: @primaryColor !important;
+}
+
+/*****************************************************************************/
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  * {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+  }
+
+  main {
+    flex: 1 0 auto;
+
+    .at-form {
+      select {
+        display: inline-block;
+      }
+    }
+  }
+}
