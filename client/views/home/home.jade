@@ -3,20 +3,17 @@ template(name='Home')
     h3 Dashboard
 
     if shifts
+      h5 Showing all shifts
 
-      ul.survey-list.collection.with-header
-        li.collection-header
-          h5 Showing individual shifts for {{userId}}
-
-        table
-          thead
-              th ID
-              th Supervisor
-              th Supervisor Contact
-              th Location
-              th Start
-              th End
-              th Info
+      table
+        thead
+            th ID
+            th Supervisor
+            th Supervisor Contact
+            th Location
+            th Start
+            th End
+            th Info
         each shifts
           tbody
             td {{_id}}

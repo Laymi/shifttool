@@ -9,20 +9,12 @@ template(name='Header')
         ul.right
           if currentUser
             .nav-commands.center
-              a(href='{{pathFor "profile"}}')
-                i.fa.fa-user.icon-large
-              a.modal-trigger(href='#survey-create-modal')
-                i.fa.fa-plus.icon-large
-              a(href='{{pathFor "earn.credits"}}')
-                i.fa.fa-copyright.icon-large
-            | {{initLeanModal}}
-            input(style='color:black;')
+          li
+            input.validate(type='text', id="searchStudent")
+            ul.collection
+              each candidate
+                li.collection-item(style='float:none;')
+                  a(href="{{pathFor 'individual'}}")
+                    {{first_name}} {{last_name}}
           li
             +atNavButton
-
-    // Survey create modal
-    #survey-create-modal.modal
-      .modal-content
-        h4 Step 1: Create Your Survey
-        a.waves-effect.waves-light.btn-large(href='{{pathFor "survey.add"}}') Create new survey
-        a.waves-effect.waves-light.btn-large(href='#') Copy existing survey
