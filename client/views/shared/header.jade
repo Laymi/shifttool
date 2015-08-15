@@ -9,6 +9,14 @@ template(name='Header')
         ul.right
           if currentUser
             .nav-commands.center
+              a(href="{{pathFor 'home'}}")
+                i.fa.fa-home.icon-large(style="color:white;")
+              a(href="{{pathFor 'shiftlist'}}")
+                i.fa.fa-list.icon-large(style="color:white;")
+              a(href="{{pathFor 'assignments'}}")
+                i.fa.fa-sitemap.icon-large(style="color:white;")
+              a(href="{{pathFor 'students'}}")
+                i.fa.fa-users.icon-large(style="color:white;")
           li
             input.validate(type='text', id="searchStudent")
             ul.collection

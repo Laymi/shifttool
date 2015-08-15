@@ -1,0 +1,49 @@
+template(name='Shiftlist')
+  #home
+    h3 Shiftlist
+
+    if shifts
+      h5 Showing global Shiftlist
+
+      table
+        thead
+          tr
+            th ID
+            th Supervisor
+            th Supervisor Contact
+            th Location
+            th Start
+            th End
+            th Info
+            th RequiredAmountOfStudents
+            th Delete
+        tbody
+            tr
+              td
+                a(class='waves-effect waves-light btn', id='addNewShift') Add new
+              td
+                input(id="supervisor")
+              td
+                input(id="supervisorContact")
+              td
+                input(id="location")
+              td
+                input(id="start", placeholder="MM DD YYYY hh:mm")
+              td
+                input(id="end", placeholder="MM DD YYYY hh:mm")
+              td
+                input(id="info")
+              td
+                input(id="requiredAmountOfStudents")
+          each shifts
+            tr
+              td {{_id}}
+              td {{info.supervisor}}
+              td {{info.supervisorContact}}
+              td {{info.location}}
+              td {{formatDate info.start}}
+              td {{formatDate info.end}}
+              td {{info.info}}
+              td {{info.requiredAmountOfStudents}}
+              td
+                a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete

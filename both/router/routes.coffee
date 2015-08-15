@@ -16,16 +16,32 @@ Router.map ->
   @route 'individual',
   path: '/individual/:_id',
   waitOn: -> Meteor.subscribe 'findAllShiftsForStudent', Router?.current()?.params?._id,
-  cache: true
+  cache: false
 
   @route 'publicstatistics', path: '/publicstatistics'
+
 # Administrative routes
   @route 'backend', path: '/backend'
+
   @route 'privatestatistics', path: '/privatestatistics'
-  @route 'shiftlist', path: '/shiftlist'
-  @route 'assignments', path: '/assignments'
-  @route 'students', path: '/students'
+
+  @route 'shiftlist',
+  path: '/shiftlist',
+  waitOn: -> Meteor.subscribe 'allShifts',
+  cache: false
+
+  @route 'assignments',
+  path: '/assignments',
+  waitOn: -> Meteor.subscribe 'allShifts',
+  cache: false
+
+  @route 'students',
+  path: '/students',
+  waitOn: -> Meteor.subscribe 'allStudents',
+  cache: false
+
   @route 'exemptions', path: '/exemptions'
+
   @route 'logs', path: '/logs'
 
   @route 'imprint', path: '/imprint'
