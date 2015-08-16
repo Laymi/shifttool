@@ -7,6 +7,12 @@ Template.Individual.helpers
   userId: ->
     Router?.current()?.params?._id
 
+  first_name: ->
+    Students.findOne(Router?.current()?.params?._id).first_name
+
+  last_name: ->
+    Students.findOne(Router?.current()?.params?._id).last_name
+
   formatDate: (date) ->
     moment(date).format('DD-MM-YYYY hh:mm:ss')
 
