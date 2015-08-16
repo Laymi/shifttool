@@ -1,25 +1,71 @@
 template(name='Assignments')
-  #home
+  #assignments
     h3 Assignments
-
     if shifts
       h5 Showing all shifts
 
       table
         thead
-            th ID
-            th Supervisor
-            th Supervisor Contact
-            th Location
-            th Start
-            th End
-            th Info
-        each shifts
-          tbody
-            td {{_id}}
-            td {{info.supervisor}}
-            td {{info.supervisorContact}}
-            td {{info.location}}
-            td {{info.start}}
-            td {{info.end}}
-            td {{info.info}}
+            th(style="width:50%") Manual
+            th(style="width:50%") Automatic
+        tbody
+          td(style="width:50%")
+            | Shift(_id)
+            input.validate(type='text', id="manualShiftSelection")
+            | Student(_id)
+            input.validate(type='text', id="manualStudentSelection")
+
+            a(class='waves-effect waves-light btn', id='manuallyAssignStudentToShift') Assign
+            hr
+          td(style="width:50%")
+            | Shift(_id)
+            input.validate(type='text', id="automaticShiftSelection")
+            | Automatically add N students dependent on their workload
+            input.validate(type='text', id="studentN")
+
+            a(class='waves-effect waves-light btn', id='automaticallyAssignStudentsToShift') Assign
+            hr
+      table
+        tbody
+          td(style="width:50%; vertical-align: text-top;")
+            h6 Students
+            table
+              thead
+                tr
+                  th ID
+                  th First Name
+                  th Last Name
+                  th Workload
+                  th ExemptionStatus
+              tbody
+                each students
+                  tr
+                    td {{_id}}
+                    td {{first_name}}
+                    td {{last_name}}
+                    td {{workload}}
+                    td {{exemptionStatus}}
+          td(style="width:50%; vertical-align: text-top;")
+            h6 Students
+            table
+              thead
+                tr
+                  th ID
+                  th Supervisor
+                  th Supervisor C
+                  th Location
+                  th Start
+                  th End
+                  th Info
+                  th RequiredStudents
+              tbody
+                each shifts
+                  tr
+                    td {{_id}}
+                    td {{info.supervisor}}
+                    td {{info.supervisorContact}}
+                    td {{info.location}}
+                    td {{formatDate info.start}}
+                    td {{formatDate info.end}}
+                    td {{info.info}}
+                    td {{info.requiredAmountOfStudents}}

@@ -1,7 +1,6 @@
 template(name='Shiftlist')
-  #home
+  #shiftlist
     h3 Shiftlist
-
     if shifts
       h5 Showing global Shiftlist
 
@@ -22,19 +21,19 @@ template(name='Shiftlist')
               td
                 a(class='waves-effect waves-light btn', id='addNewShift') Add new
               td
-                input(id="supervisor")
+                input(type="text",id="supervisor")
               td
-                input(id="supervisorContact")
+                input(type="text",id="supervisorContact")
               td
-                input(id="location")
+                input(type="text",id="location")
               td
-                input(id="start", placeholder="MM DD YYYY hh:mm")
+                input(type="text",id="start", placeholder="MM DD YYYY hh:mm")
               td
-                input(id="end", placeholder="MM DD YYYY hh:mm")
+                input(type="text",id="end", placeholder="MM DD YYYY hh:mm")
               td
-                input(id="info")
+                input(type="text",id="info")
               td
-                input(id="requiredAmountOfStudents")
+                input(type="text",id="requiredAmountOfStudents")
           each shifts
             tr
               td {{_id}}

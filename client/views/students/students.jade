@@ -1,6 +1,6 @@
 template(name='Students')
-  #home
-    h3 Studentlist
+  #students
+    h3 Students
 
     if students
       h5 Showing Studentlist
@@ -13,26 +13,33 @@ template(name='Students')
             th Last Name
             th Workload
             th ExemptionStatus
-            th Delete
+            th Delete/Edit
         tbody
             tr
               td
                 a(class='waves-effect waves-light btn', id='addNewStudent') Add new
+                input(type="text",id="_id", style="display:none")
               td
-                input(id="first_name")
+                input(type="text",id="first_name")
               td
-                input(id="last_name")
+                input(type="text",id="last_name")
               td
-                input(id="workload")
+                input(type="text",id="workload", disabled)
               td
-                input(id="exemptionStatus")
+                input(type="text",id="exemptionStatus")
               td
           each students
             tr
-              td {{_id}}
-              td {{first_name}}
-              td {{last_name}}
-              td {{workload}}
-              td {{exemptionStatus}}
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-first_name") {{first_name}}
+              td
+                span(id="{{_id}}-last_name") {{last_name}}
+              td
+                span(id="{{_id}}-workload") {{workload}}
+              td
+                span(id="{{_id}}-exemptionStatus") {{exemptionStatus}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
+                a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit

@@ -22,7 +22,7 @@ template(name='Header')
             ul.collection
               each candidate
                 li.collection-item(style='float:none;')
-                  a(href="{{pathFor 'individual'}}")
-                    {{first_name}} {{last_name}}
+                  a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
           li
+            i.fa.fa-search(style="color:white; display: inline; margin-left: 5px;")
             +atNavButton
