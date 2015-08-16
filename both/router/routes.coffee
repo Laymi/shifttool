@@ -10,7 +10,8 @@ Router.map ->
 # All routes for the normal users
   @route 'home',
   path: '/',
-  waitOn: -> Meteor.subscribe 'allShifts',
+  waitOn: ->
+    Meteor.subscribe 'allShifts',
   cache: true
 
   @route 'individual',
@@ -32,13 +33,11 @@ Router.map ->
 
   @route 'assignments',
   path: '/assignments',
-  waitOn: -> Meteor.subscribe 'allShifts',
+  waitOn: ->
+    Meteor.subscribe 'allShifts',
   cache: false
 
-  @route 'students',
-  path: '/students',
-  waitOn: -> Meteor.subscribe 'allStudents',
-  cache: false
+  @route 'students', path: '/students'
 
   @route 'exemptions', path: '/exemptions'
 

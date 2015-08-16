@@ -1,3 +1,3 @@
 # XXX Temporary publication
-Meteor.publish 'allStudents', ->
+Meteor.publish null, ->
   Students.find()
