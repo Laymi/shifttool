@@ -19,13 +19,17 @@ https://install.meteor.com/windows
 Clone the git repository in some folder that you have RW permissions on
 Open a command prompt, navigate to the folder and type 'meteor' to start the app
 ```
-# Example JSON - Students
+# Getting started
+You find some example JSONs for the important collections below but for convenience I added a method to automatically populate the database for you.
+So everything you have to do is to open the console and type:
+`Meteor.call('populateDatabase', N)` <br/> N = Amount of students and shifts to add
+## Example JSON - Students
 ```
 {
     "_id" : "LXnceh7kqsRmssMDA"
 }
 ```
-# Example JSON - Shifts
+## Example JSON - Shifts
 ```
 {
   "_id":"AXnceh7kqsRmssMDA",
