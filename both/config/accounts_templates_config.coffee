@@ -59,11 +59,6 @@ AccountsTemplates.addFields [
     required: true
     displayName: 'Last Name'
   ,
-    _id: 'birthday'
-    type: 'text'
-    displayName: 'Birthday'
-    template: 'BirthdayInput'
-  ,
     _id: 'gender'
     type: 'select'
     displayName: 'Gender'
@@ -111,4 +106,3 @@ AccountsTemplates.addFields [
       value: 'germany'
     ]
 ]
-
