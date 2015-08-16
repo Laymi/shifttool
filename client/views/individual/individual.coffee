@@ -9,3 +9,7 @@ Template.Individual.helpers
 
   formatDate: (date) ->
     moment(date).format('DD-MM-YYYY hh:mm:ss')
+
+Template.Individual.rendered = ->
+  document.getElementById('searchStudent').value = ''
+  Session.set('possibleStudents', undefined)
