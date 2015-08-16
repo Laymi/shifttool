@@ -1,6 +1,4 @@
 header {
-  margin-bottom: 20px;
-
   .brand-title {
     position: relative;
     left: 110px;
@@ -8,7 +6,7 @@ header {
   }
 
   .collection-item {
-    color: black;
+    color: @textColor;
     width: 200px;
   }
 
@@ -16,29 +14,23 @@ header {
     width: 200px;
   }
 
+  .menubar-icons {
+    color: @accentColor;
+  }
+
   a {
-    color: black !important;
+    color: @textColor !important;
   }
 
   .collection {
     position: fixed;
   }
 
-  .brand-logo {
-    background-color: #00628B !important;
-    width: 130px;
-    height: 130px;
-    position: absolute;
-    border-radius: 50%;
-    border:none;
-    top: -40px;
-    left: -20px;
-  }
-
   .nav-commands {
     position: absolute;
     left: 50%;
     transform: translateX(-45%);
+    margin-top: 7px;
 
     a {
       display: inline !important;
@@ -51,9 +43,15 @@ header {
   }
 
   #at-nav-button {
-    margin-left: 17px;
+    margin-left: 20px;
     margin-right: 20px;
     background-color: @accentColor;
+    color: white !important;
+  }
+
+  nav {
+    height: 80px;
+    line-height: 80px;
   }
 
   .header-img {

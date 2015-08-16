@@ -10,19 +10,19 @@ template(name='Header')
           if currentUser
             .nav-commands.center
               a(href="{{pathFor 'home'}}")
-                i.fa.fa-home.icon-large(style="color:white;")
+                i.fa.fa-home.icon-large(class="menubar-icons")
               a(href="{{pathFor 'shiftlist'}}")
-                i.fa.fa-list.icon-large(style="color:white;")
+                i.fa.fa-list.icon-large(class="menubar-icons")
               a(href="{{pathFor 'assignments'}}")
-                i.fa.fa-sitemap.icon-large(style="color:white;")
+                i.fa.fa-sitemap.icon-large(class="menubar-icons")
               a(href="{{pathFor 'students'}}")
-                i.fa.fa-users.icon-large(style="color:white;")
+                i.fa.fa-users.icon-large(class="menubar-icons")
           li
             input.validate(type='text', id="searchStudent")
+            i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
             ul.collection
               each candidate
                 li.collection-item(style='float:none;')
                   a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
           li
-            i.fa.fa-search(style="color:white; display: inline; margin-left: 5px;")
             +atNavButton

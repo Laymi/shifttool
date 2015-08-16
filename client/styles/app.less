@@ -7,10 +7,13 @@
 @import "pages/home.import.less";
 /*****************************************************************************/
 
-@primaryColor:       #00628B;
-@darkPrimaryColor:   #0D47A1;
+//@primaryColor:       #00628B;
+@primaryColor:       white;
+@darkPrimaryColor:   #c9c9c9;
 @lightPrimaryColor:  #42A5F5;
-@accentColor:        #1E88E5;
+@accentColor:        lightgray;
+@accentColor2:       #4b96cd;
+@textColor:          black;
 @primaryTextColor:   #212121;
 @secondaryTextColor: #727272;
 @dividerColor:       #B6B6B6;
@@ -19,10 +22,26 @@
   background-color: @primaryColor !important;
 }
 
+.btn {
+  background-color: @accentColor2 !important;
+}
+
+.text {
+  color: @textColor;
+}
+
+.accentColor {
+  color: @accentColor;
+}
+
 input[type="text"] {
+  color: @textColor;
   padding: 10px;
-  border: solid 5px #c9c9c9;
+  border: solid 5px @darkPrimaryColor;
   transition: border 0.3s;
+}
+nav ul li:hover, nav ul li.active {
+  background-color: white;
 }
 input[type="text"]:focus,
 input[type="text"].focus {
