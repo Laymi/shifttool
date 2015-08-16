@@ -16,7 +16,6 @@ Template.Assignments.helpers
 
 Template.Assignments.events
   'click #manuallyAssignStudentToShift': ->
-    console.log 'assigning', manualStudentSelection.value, 'to', document.getElementById('manualShiftSelection').value
     Meteor.call 'assignStudentToShift', document.getElementById('manualStudentSelection').value, document.getElementById('manualShiftSelection').value
 
   'click #automaticallyAssignStudentsToShift': ->

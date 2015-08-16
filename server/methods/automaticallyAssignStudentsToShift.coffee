@@ -3,8 +3,6 @@ Meteor.methods
     check shiftId, String
     check studentN, Number
 
-    console.log 'studentN', studentN
-
     if shiftId == '' || shiftId == undefined
       throw new Meteor.Error 'shiftId invalid'
     if studentN == '' || studentN == 0|| studentN == undefined || isNaN studentN

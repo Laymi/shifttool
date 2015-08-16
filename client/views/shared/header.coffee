@@ -13,4 +13,3 @@ Template.Header.events
       Session.set('possibleStudents', possibleStudents)
     else
       Session.set('possibleStudents', undefined)
-    #console.log 'possibleStudents', possibleStudents, event.target.value
