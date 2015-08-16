@@ -11,6 +11,19 @@ Template.Shiftlist.helpers
     moment(date).format('MM-DD-YYYY hh:mm:ss')
 
 Template.Shiftlist.events
+  "click .editbtn": (event) ->
+    event.preventDefault()
+
+    Meteor.call 'deleteShiftById', event.target.name
+    document.getElementById('_id').value = document.getElementById(event.target.name + '-' + '_id').innerText
+    document.getElementById('supervisor').value = document.getElementById(event.target.name + '-' + 'supervisor').innerText
+    document.getElementById('supervisorContact').value = document.getElementById(event.target.name + '-' + 'supervisorContact').innerText
+    document.getElementById('location').value = document.getElementById(event.target.name + '-' + 'location').innerText
+    document.getElementById('start').value = document.getElementById(event.target.name + '-' + 'start').innerText
+    document.getElementById('end').value = document.getElementById(event.target.name + '-' + 'end').innerText
+    document.getElementById('info').value = document.getElementById(event.target.name + '-' + 'info').innerText
+    document.getElementById('requiredAmountOfStudents').value = document.getElementById(event.target.name + '-' + 'requiredAmountOfStudents').innerText
+
   "click .deletebtn": (event) ->
     event.preventDefault()
 
@@ -19,7 +32,7 @@ Template.Shiftlist.events
   "click #addNewShift": (event) ->
     event.preventDefault()
     newShift =
-      "_id": Random.id()
+      "_id": document.getElementById('_id').value or Random.id()
       "info" : {
         "supervisor" : document.getElementById('supervisor').value
         "supervisorContact" : document.getElementById('supervisorContact').value
@@ -33,3 +46,5 @@ Template.Shiftlist.events
       "createdAt": new Date
 
     Meteor.call 'addNewShift', newShift
+
+    document.getElementById('_id').value = ''

@@ -20,6 +20,7 @@ template(name='Shiftlist')
             tr
               td
                 a(class='waves-effect waves-light btn', id='addNewShift') Add new
+                input(type="text",id="_id",style="display:none")
               td
                 input(type="text",id="supervisor")
               td
@@ -36,13 +37,22 @@ template(name='Shiftlist')
                 input(type="text",id="requiredAmountOfStudents")
           each shifts
             tr
-              td {{_id}}
-              td {{info.supervisor}}
-              td {{info.supervisorContact}}
-              td {{info.location}}
-              td {{formatDate info.start}}
-              td {{formatDate info.end}}
-              td {{info.info}}
-              td {{info.requiredAmountOfStudents}}
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-supervisor") {{info.supervisor}}
+              td
+                span(id="{{_id}}-supervisorContact") {{info.supervisorContact}}
+              td
+                span(id="{{_id}}-location") {{info.location}}
+              td
+                span(id="{{_id}}-start") {{formatDate info.start}}
+              td
+                span(id="{{_id}}-end") {{formatDate info.end}}
+              td
+                span(id="{{_id}}-info") {{info.info}}
+              td
+                span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
+                a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit
