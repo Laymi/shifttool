@@ -17,12 +17,12 @@ template(name='Header')
                 i.fa.fa-sitemap.icon-large(class="menubar-icons")
               a(href="{{pathFor 'students'}}")
                 i.fa.fa-users.icon-large(class="menubar-icons")
-          li
-            input.validate(type='text', id="searchStudent")
-            i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
-            ul.collection
-              each candidate
-                li.collection-item(style='float:none;')
-                  a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
+            li
+              input.validate(type='text', id="searchStudent")
+              i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
+              ul.collection
+                each candidate
+                  li.collection-item(style='float:none;')
+                    a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
           li
             +atNavButton
