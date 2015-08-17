@@ -47,6 +47,7 @@ Router.map ->
   @route 'privacy', path: '/privacy'
   @route 'terms', path: '/terms'
 
-# Require signing in for all routes, except:
+### Require signing in for all routes, except:
 Router.plugin 'ensureSignedIn',
   except: ['home', 'imprint', 'privacy', 'terms']
+###
