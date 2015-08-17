@@ -1,17 +1,17 @@
-# Routes
-AccountsTemplates.configureRoute 'changePwd'
+### Routes
+#AccountsTemplates.configureRoute 'changePwd'
 AccountsTemplates.configureRoute 'enrollAccount'
-AccountsTemplates.configureRoute 'forgotPwd'
-AccountsTemplates.configureRoute 'resetPwd'
+#AccountsTemplates.configureRoute 'forgotPwd'
+#AccountsTemplates.configureRoute 'resetPwd'
 AccountsTemplates.configureRoute 'signIn'
-AccountsTemplates.configureRoute 'signUp'
-AccountsTemplates.configureRoute 'verifyEmail'
+#AccountsTemplates.configureRoute 'signUp'
+#AccountsTemplates.configureRoute 'verifyEmail'
 
 # Options
 AccountsTemplates.configure
-  showForgotPasswordLink: true
+  showForgotPasswordLink: false
   overrideLoginErrors: true
-  enablePasswordChange: true
+  enablePasswordChange: false
   confirmPassword: false
   sendVerificationEmail: false
   negativeValidation: true
@@ -21,8 +21,6 @@ AccountsTemplates.configure
   homeRoutePath: '/'
   privacyUrl: 'privacy'
   termsUrl: 'terms'
-  preSignUpHook: (password, info) ->
-    info.profile.birthday = $('#birthday-input').val()
 
 # Setup custom signup form
 
@@ -59,3 +57,4 @@ AccountsTemplates.addFields [
     required: true
     displayName: 'Last Name'
 ]
+###
