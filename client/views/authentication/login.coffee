@@ -17,7 +17,7 @@ Template.Login.events
 
   "click #loginUser": (data) ->
     data =
-      email: document.getElementById('email').value
+      email: document.getElementById('email').value.replace('@whu.edu','')
       password: document.getElementById('password').value
 
     ###Meteor.loginWithPassword data.email, data.password, (error) ->
@@ -31,4 +31,4 @@ Template.Login.events
       if err
         console.log err.reason
       else
-        Meteor.loginWithPassword data.email, data.password
+        Meteor.loginWithPassword data.email+'@whu.edu', data.password
