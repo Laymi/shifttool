@@ -1,2 +1,3 @@
-if Meteor.isClient
+###if Meteor.isClient
   AutoForm.setDefaultTemplate 'materialize'
+###

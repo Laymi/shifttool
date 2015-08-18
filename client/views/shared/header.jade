@@ -4,7 +4,7 @@ template(name='Header')
       div.nav-wrapper.primaryColor
 
         a(href='{{pathFor "home"}}')
-          img(src='/img/nyc_main.jpg' style='height: 100%')
+          img(src='/img/nyc_main.jpg' style='height: 75%; margin-top: 10px;padding-left: 20px')
 
         ul.right
           if currentUser
@@ -17,12 +17,16 @@ template(name='Header')
                 i.fa.fa-sitemap.icon-large(class="menubar-icons")
               a(href="{{pathFor 'students'}}")
                 i.fa.fa-users.icon-large(class="menubar-icons")
-          li
-            input.validate(type='text', id="searchStudent")
-            i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
-            ul.collection
-              each candidate
-                li.collection-item(style='float:none;')
-                  a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
-          li
-            +atNavButton
+            li
+              input.validate(type='text', id="searchStudent")
+              i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
+              ul.collection
+                each candidate
+                  li.collection-item(style='float:none;')
+                    a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
+            li
+              a(class='waves-effect waves-light btn', id='logout') Logout
+
+          else
+            li
+              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}') Login

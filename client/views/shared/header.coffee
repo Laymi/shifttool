@@ -13,3 +13,6 @@ Template.Header.events
       Session.set('possibleStudents', possibleStudents)
     else
       Session.set('possibleStudents', undefined)
+
+  'click #logout': ->
+    Meteor.logout()
