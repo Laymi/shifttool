@@ -31,4 +31,4 @@ Template.Login.events
       if err
         console.log err.reason
       else
-        console.error 'login successful for user', data.email
+        Meteor.loginWithPassword data.email, data.password
