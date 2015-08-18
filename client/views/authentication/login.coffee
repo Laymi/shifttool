@@ -31,4 +31,4 @@ Template.Login.events
       if err
         console.log err.reason
       else
-        Meteor.loginWithPassword data.email, data.password
+        Meteor.loginWithPassword data.email+'@whu.edu', data.password
