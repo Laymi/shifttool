@@ -14,6 +14,8 @@ Router.map ->
     Meteor.subscribe 'allShifts',
   cache: true
 
+  @route 'login', path: '/login'
+
   @route 'individual',
   path: '/individual/:_id',
   waitOn: -> Meteor.subscribe 'findAllShiftsForStudent', Router?.current()?.params?._id,
