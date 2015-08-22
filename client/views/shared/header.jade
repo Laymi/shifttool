@@ -19,14 +19,13 @@ template(name='Header')
                 i.fa.fa-users.icon-large(class="menubar-icons")
             li
               input.validate(type='text', id="searchStudent")
-              i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
+              i.fa.fa-search(style="display: inline; margin-left: 5px; margin-right: 20px; margin-top: 10px;",class="accentColor")
               ul.collection
                 each candidate
                   li.collection-item(style='float:none;')
                     a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
             li
-              a(class='waves-effect waves-light btn', id='logout') Logout
-
+              a(class='waves-effect waves-light btn', id='logout' style='margin-right:20px') Logout
           else
             li
-              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}') Login
+              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:20px') Login
