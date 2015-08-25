@@ -27,3 +27,10 @@ Meteor.methods
         "createdAt": new Date
 
       Shifts.insert newShift
+
+  createExampleUser: ->
+    Accounts.createUser
+      email: 'test1337@test.test'
+      password: 'test1234'
+
+    console.log 'test@test.de', 'test1234'
