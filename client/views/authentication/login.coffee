@@ -20,15 +20,15 @@ Template.Login.events
       email: document.getElementById('email').value.replace('@whu.edu','')
       password: document.getElementById('password').value
 
-    ###Meteor.loginWithPassword data.email, data.password, (error) ->
+    Meteor.loginWithPassword data.email, data.password, (error) ->
       if error
         toastr.error error.reason
         console.error 'login error ', error, 'for user ', data.email
       else
-        console.error 'login successful for user ', data.email###
+        console.error 'login successful for user ', data.email
 
-    Meteor.call 'loginWithPAP', data.email, data.password, (err) ->
+    ###Meteor.call 'loginWithPAP', data.email, data.password, (err) ->
       if err
         console.log err.reason
       else
-        Meteor.loginWithPassword data.email+'@whu.edu', data.password
+        Meteor.loginWithPassword data.email+'@whu.edu', data.password###
