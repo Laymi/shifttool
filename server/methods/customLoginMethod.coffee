@@ -15,8 +15,8 @@ Meteor.methods
             return true
           else
             Accounts.createUser
-              username: user,
-              email : userEmail,
+              username: user
+              email : userEmail
               password : pass
             return true
       if error != null
