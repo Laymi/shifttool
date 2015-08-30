@@ -5,4 +5,6 @@ template(name='Footer')
         a(href='{{pathFor "imprint"}}' class='text') Imprint |
         a(href='{{pathFor "privacy"}}' class='text') Privacy |
         a(href='{{pathFor "terms"}}' class='text') Terms |
+        if currentUser
+          a(href='{{pathFor "home"}}' id='logout' class='text') Logout |
         span(class='text')© {{year}} Daniel Pesch | WHU
