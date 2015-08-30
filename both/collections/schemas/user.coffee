@@ -1,11 +1,3 @@
-Schemas.UserProfile = new SimpleSchema
-  firstName:
-    type: String
-    regEx: /^[a-zA-Z-]{2,25}$/
-  lastName:
-    type: String
-    regEx: /^[a-zA-Z]{2,25}$/
-
 Schemas.User = new SimpleSchema
   emails:
     type: [ Object ]
@@ -16,9 +8,9 @@ Schemas.User = new SimpleSchema
   'emails.$.verified':
     type: Boolean
   profile:
-    type: Schemas.UserProfile
-    label: ' '
+    type: Object
     optional: true
+    blackbox: true
   services:
     type: Object
     optional: true
