@@ -6,7 +6,7 @@ Template.Header.helpers
     Session.get('possibleStudents')
 
   currentUserIsAdmin: ->
-    return Meteor.user().profile.role == 'admin'
+    return Meteor.user()?.profile?.role == 'admin'
 
 Template.Header.events
   'keyup input': (event, template) ->
