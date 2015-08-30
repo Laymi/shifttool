@@ -2,24 +2,4 @@ template(name='Home')
   #home
     h3 Dashboard
 
-    if shifts
-      h5 Showing all shifts
-
-      table
-        thead
-            th ID
-            th Supervisor
-            th Supervisor Contact
-            th Location
-            th Start
-            th End
-            th Info
-        each shifts
-          tbody
-            td {{_id}}
-            td {{info.supervisor}}
-            td {{info.supervisorContact}}
-            td {{info.location}}
-            td {{info.start}}
-            td {{info.end}}
-            td {{info.info}}
+    h5 Hello :) This is the home page.
