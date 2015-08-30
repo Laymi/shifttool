@@ -8,15 +8,12 @@ template(name='Header')
 
         ul.right
           if currentUser
-            .nav-commands.center
-              a(href="{{pathFor 'home'}}")
-                i.fa.fa-home.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'shiftlist'}}")
-                i.fa.fa-list.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'assignments'}}")
-                i.fa.fa-sitemap.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'students'}}")
-                i.fa.fa-users.icon-large(class="menubar-icons")
+            if currentUserIsAdmin
+              .nav-commands.center
+                a(href="{{pathFor 'home'}}") Dashboard
+                a(href="{{pathFor 'shiftlist'}}") Shiftlist
+                a(href="{{pathFor 'assignments'}}") Assignments
+                a(href="{{pathFor 'students'}}") Students
             li
               input.validate(type='text', placeholder='Search a student',id="searchStudent", style='margin-right: 15px; color:green;')
               ul.collection
