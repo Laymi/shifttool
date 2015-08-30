@@ -25,7 +25,7 @@ template(name='Header')
                   li.collection-item(style='float:none;')
                     a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
             li
-              a(class='waves-effect waves-light btn', id='logout' style='margin-right:120px') Logout
+              a(class='waves-effect waves-light btn', id='logout' style='margin-right:120px;') Logout
           else
             li
               a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:120px') Login
