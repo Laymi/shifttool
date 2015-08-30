@@ -13,7 +13,7 @@ Router.map ->
   waitOn: ->
     Meteor.subscribe 'allShifts',
   cache: true
-
+# Non-Administrative routes
   @route 'login', path: '/login'
 
   @route 'individual',
@@ -25,6 +25,8 @@ Router.map ->
 
 # Administrative routes
   @route 'backend', path: '/backend'
+
+  @route 'users', path: '/users'
 
   @route 'privatestatistics', path: '/privatestatistics'
 
