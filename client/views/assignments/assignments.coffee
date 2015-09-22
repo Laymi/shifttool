@@ -27,6 +27,8 @@ Template.Assignments.events
         toastr.error err.error
       else
         toastr.success 'Ok.'
+        document.getElementById('automaticShiftSelection').value = ''
+        document.getElementById('studentN').value = ''
 
   'focus #studentN': ->
     studentN.value = Shifts.findOne(automaticShiftSelection.value)?.workload or ''

@@ -26,8 +26,8 @@ Template.Shiftlist.events
 
   "click .deletebtn": (event) ->
     event.preventDefault()
-
-    Meteor.call 'deleteShiftById', event.target.name
+    if confirm 'Do you really want to delete the shift ' + event.target.name
+      Meteor.call 'deleteShiftById', event.target.name
 
   "click #addNewShift": (event) ->
     event.preventDefault()
@@ -46,5 +46,12 @@ Template.Shiftlist.events
       "createdAt": new Date
 
     Meteor.call 'addNewShift', newShift
-
+    toastr.success 'Added!'
+    document.getElementById('supervisor').value = ''
+    document.getElementById('supervisorContact').value = ''
+    document.getElementById('location').value = ''
+    document.getElementById('start').value = ''
+    document.getElementById('end').value = ''
+    document.getElementById('info').value = ''
+    document.getElementById('requiredAmountOfStudents').value = ''
     document.getElementById('_id').value = ''

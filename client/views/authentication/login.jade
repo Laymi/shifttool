@@ -3,6 +3,7 @@ template(name='Login')
     #loginWindow  
       br
       h3 Login Stuff
-        input(type="text",id="email")
+      form(method="get", action="")
+        input(type="text",id="email", autofocus)
         input(type="password",id="password")
-        a(class='waves-effect waves-light btn', id='loginUser') Login
+        input(type="submit", style="font-size:2em", class='waves-effect waves-light btn', id='loginUser') Login

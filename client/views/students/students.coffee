@@ -7,7 +7,9 @@ Template.Students.helpers
 Template.Students.events
   "click .editbtn": (event) ->
     event.preventDefault()
-    if confirm 'Do you really want to edit the student ' + event.target.name
+    firstname = document.getElementById(event.target.name + '-' + 'first_name').innerText
+    lastname = document.getElementById(event.target.name + '-' + 'last_name').innerText
+    if confirm 'Do you really want to edit the student ' + firstname + ' ' + lastname
       alert 'We will now delete the user and prefill the user creation inputs'
       Meteor.call 'deleteStudentById', event.target.name
       document.getElementById('first_name').value = document.getElementById(event.target.name + '-' + 'first_name').innerText
@@ -18,7 +20,9 @@ Template.Students.events
 
   "click .deletebtn": (event) ->
     event.preventDefault()
-    if confirm 'Do you really want to delete the student ' + event.target.name
+    firstname = document.getElementById(event.target.name + '-' + 'first_name').innerText
+    lastname = document.getElementById(event.target.name + '-' + 'last_name').innerText
+    if confirm 'Do you really want to delete the student ' firstname + ' ' + lastname
       Meteor.call 'deleteStudentById', event.target.name
 
   "click #addNewStudent": (event) ->
@@ -33,4 +37,8 @@ Template.Students.events
 
     Meteor.call 'addNewStudent', newStudent
 
+    toastr.success 'Added!'
+    document.getElementById('first_name').value = ''
+    document.getElementById('last_name').value = ''
+    document.getElementById('exemptionStatus').value = '' 
     document.getElementById('_id').value = ''
