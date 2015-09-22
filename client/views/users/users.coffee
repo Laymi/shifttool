@@ -14,7 +14,7 @@ Template.Users.helpers
 Template.Users.events
   "click .editbtn": (event) ->
     event.preventDefault()
-    if confirm 'Do you really want to edit the student ' + event.target.name
+    if confirm 'Do you really want to edit the user ' + document.getElementById(event.target.name + '-' + 'email').innerText
       alert 'We will now delete the user and prefill the user creation inputs'
       document.getElementById('email').value = document.getElementById(event.target.name + '-' + 'email').innerText
       document.getElementById('role').value = document.getElementById(event.target.name + '-' + 'role').innerText
@@ -27,7 +27,8 @@ Template.Users.events
       "role" : document.getElementById('role').value
 
     Meteor.call 'saveUser', user
-
+    
+    toastr.success 'Saved!'
     document.getElementById('_id').value = ''
     document.getElementById('email').value = ''
     document.getElementById('role').value = ''
