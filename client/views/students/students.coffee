@@ -37,4 +37,8 @@ Template.Students.events
 
     Meteor.call 'addNewStudent', newStudent
 
+    alert 'Student successfully added!'
+    document.getElementById('first_name').value = ''
+    document.getElementById('last_name').value = ''
+    document.getElementById('exemptionStatus').value = '' 
     document.getElementById('_id').value = ''
