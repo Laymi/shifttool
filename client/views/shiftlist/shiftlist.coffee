@@ -46,7 +46,7 @@ Template.Shiftlist.events
       "createdAt": new Date
 
     Meteor.call 'addNewShift', newShift
-    alert 'Student successfully added!'
+    toastr.success 'Added!'
     document.getElementById('supervisor').value = ''
     document.getElementById('supervisorContact').value = ''
     document.getElementById('location').value = ''
