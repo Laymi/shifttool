@@ -16,7 +16,12 @@ template(name='Individual')
         each shifts
           tbody
             tr
-              td {{_id}}
+              if currentUserIsThisStudent
+                td 
+                  a(id="listShiftForExchange", name="{{_id}}") CHANGE
+                  {{_id}}
+              else
+                td {{_id}}
               td {{info.supervisor}}
               td {{info.supervisorContact}}
               td {{info.location}}
