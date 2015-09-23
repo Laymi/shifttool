@@ -1,0 +1,30 @@
+template(name='Exchange')
+  #home
+    h4 Showing all tradable shifts
+    br
+    if exchangableShifts
+      table
+        thead
+          tr
+            th ID
+            th Supervisor
+            th Supervisor Contact
+            th Location
+            th Start
+            th End
+            th Info
+        each exchangableShifts
+          tbody
+            tr
+              if currentUserIsThisStudent
+                td 
+                  a(href="{{pathFor 'exchange'}}", id="listShiftForExchange", name="{{_id}}") CHANGE
+                  {{_id}}
+              else
+                td {{_id}}
+              td {{info.supervisor}}
+              td {{info.supervisorContact}}
+              td {{info.location}}
+              td {{formatDate info.start}}
+              td {{formatDate info.end}}
+              td {{info.info}}
