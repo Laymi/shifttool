@@ -23,6 +23,9 @@ Router.map ->
 
   @route 'publicstatistics', path: '/publicstatistics'
 
+  @route 'exchange',
+  path: '/exchange'
+
 # Administrative routes
   @route 'backend', path: '/backend'
 
