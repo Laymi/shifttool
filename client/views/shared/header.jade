@@ -4,17 +4,17 @@ template(name='Header')
       div.nav-wrapper.primaryColor
 
         a(href='{{pathFor "home"}}')
-          img(src='/img/nyc_main.jpg' style='height: 75%; margin-top: 10px;padding-left: 20px')
+          img(src='/img/shifttool_logo.jpg' style='height: 75%; margin-top: 10px;padding-left: 20px')
 
         ul.right
           if currentUser
             if currentUserIsAdmin
               .nav-commands.center
-                a(href="{{pathFor 'home'}}") Dashboard
-                a(href="{{pathFor 'shiftlist'}}") Shiftlist
-                a(href="{{pathFor 'assignments'}}") Assignments
-                a(href="{{pathFor 'students'}}") Students
-                a(href="{{pathFor 'users'}}") User Rights
+                a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
+                a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
+                a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
+                a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
+                a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
                 
 
             li
