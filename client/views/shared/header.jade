@@ -10,11 +10,11 @@ template(name='Header')
           if currentUser
             if currentUserIsAdmin
               .nav-commands.center
-                a(href="{{pathFor 'home'}}") Dashboard
-                a(href="{{pathFor 'shiftlist'}}") Shiftlist
-                a(href="{{pathFor 'assignments'}}") Assignments
-                a(href="{{pathFor 'students'}}") Students
-                a(href="{{pathFor 'users'}}") User Rights
+                a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
+                a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
+                a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
+                a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
+                a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
                 
 
             li
