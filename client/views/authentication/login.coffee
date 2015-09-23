@@ -16,6 +16,8 @@ Template.Login.events
       document.getElementById('_id').value = document.getElementById(event.target.name + '-' + '_id').innerText
 
   "click #loginUser": (data) ->
+    event.preventDefault()
+    
     data =
       email: document.getElementById('email').value.replace('@whu.edu','')
       password: document.getElementById('password').value

@@ -22,7 +22,7 @@ Template.Students.events
     event.preventDefault()
     firstname = document.getElementById(event.target.name + '-' + 'first_name').innerText
     lastname = document.getElementById(event.target.name + '-' + 'last_name').innerText
-    if confirm 'Do you really want to delete the student ' firstname + ' ' + lastname
+    if confirm 'Do you really want to delete the student ' + firstname + ' ' + lastname
       Meteor.call 'deleteStudentById', event.target.name
 
   "click #addNewStudent": (event) ->
