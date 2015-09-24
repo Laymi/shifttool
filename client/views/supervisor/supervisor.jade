@@ -22,9 +22,6 @@ template(name='Supervisor')
             option(value="Tomorrow") Tomorrow
             option(value="Date3") Date3
             option(value="Date4") Date4
-    br
-    br
-    
     table
       thead
         th Shift
@@ -32,21 +29,16 @@ template(name='Supervisor')
         th Time
         th Name
         th Attended
-      each shifts
-        // loop students for(i=0;i<assignedStudents.length;i++)
-          tbody
-              td
-                span(id="{{_id}}-_id") {{_id}}
-              td
-                span(id="{{_id}}-start") {{formatDate info.start}}
-              td
-                {{formatTime info.start}} + ' - ' + {{formatTime info.end}}
-              td
-                //Students.findOne(assignedStudents[i]).first_name + ' ' + Students.findOne(assignedStudents[i]).last_name
-              td
-                input(type="checkbox" id="Yes" value="No")
-                input(type="checkbox" id="No" value="Yes")
-
-      br     
-      a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save
+      tbody
+        each shifts          
+          td
+            span(id="{{_id}}-_id") {{_id}}
+          td
+            span(id="{{_id}}-start") {{formatDate info.start}}
+          td {{formatTime info.start}} + ' - ' + {{formatTime info.end}}
+          td
+          td
+            input(type="checkbox" id="Yes" value="No")
+            input(type="checkbox" id="No" value="Yes")
+    a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save
         
