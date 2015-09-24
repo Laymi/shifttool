@@ -14,7 +14,7 @@ Template.Supervisor.helpers
 
   shifts: ->
     shifts = Shifts.find().fetch()
-    if shifts.lenght then shifts else null
+    if shifts.length then shifts else null
 
 Template.Supervisor.events
   "click .editbtn": (event) ->
