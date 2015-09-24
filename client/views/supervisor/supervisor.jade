@@ -1,0 +1,45 @@
+template(name='Supervisor')
+  #users
+    h3 Supervisor
+    h5 Showing assigned shifts
+    br
+    br
+    table 
+      thead
+        th(style="width:15%;") Supervisor
+        th Date
+      tbody
+        td 
+          select
+            option(value="Defaul") Default
+            option(value="Supervisor1") Supervisor1
+            option(value="Supervisor2") Supervisor2
+            option(value="Supervisor3") Supervisor3
+        td
+          select
+            option(value="Yesterday") Yesterday
+            option(value="Today") Today
+            option(value="Tomorrow") Tomorrow
+            option(value="Date3") Date3
+            option(value="Date4") Date4
+    br
+    br
+    table
+      thead
+        th Shift
+        th Date
+        th Time
+        th Name
+        th Attended
+      tbody
+          td
+            shiftID
+          td
+            Date
+          td
+            Time
+          td
+            Name
+          td
+            input(type="checkbox" id="Yes")
+        
