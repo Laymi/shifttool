@@ -1,4 +1,4 @@
-#Meteor.subscribe 'allShifts'
+Meteor.subscribe 'allShifts'
 Template.Supervisor.helpers
   formatDate: (date) ->
     moment(date).format('DD-MM-YY')
