@@ -49,6 +49,8 @@ Router.map ->
 
   @route 'supervisor', path: '/supervisor'
 
+  @route 'help', path: '/help'
+
   @route 'imprint', path: '/imprint'
   @route 'privacy', path: '/privacy'
   @route 'terms', path: '/terms'
