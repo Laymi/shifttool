@@ -16,4 +16,5 @@ Template.acceptTrade.rendered = ->
 
 Template.acceptTrade.events
   "click #acceptOffer": (event) ->
+    Meteor.call 'closeTrade', Router?.current()?.params?._id
     # console.log 'accepted Offer'
