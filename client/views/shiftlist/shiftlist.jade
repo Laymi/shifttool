@@ -13,7 +13,9 @@ template(name='Shiftlist')
             th Location
             th Start
             th End
-            th Info
+            th shiftname
+            th remarks
+            th Gender
             th # Students
             th Action
         tbody
@@ -32,7 +34,11 @@ template(name='Shiftlist')
               td
                 input(type="text",id="end", placeholder="MM DD YYYY hh:mm")
               td
-                input(type="text",id="info")
+                input(type="text",id="shiftname")
+              td
+                input(type="text",id="remarks")
+              td
+                input(type="text",id="gender")
               td
                 input(type="text",id="requiredAmountOfStudents")
           each shifts
@@ -50,7 +56,11 @@ template(name='Shiftlist')
               td
                 span(id="{{_id}}-end") {{formatDate info.end}}
               td
-                span(id="{{_id}}-info") {{info.info}}
+                span(id="{{_id}}-shiftname") {{info.shiftname}}
+              td
+                span(id="{{_id}}-remarks") {{info.remarks}}
+              td
+                span(id="{{_id}}-gender") {{info.gender}}
               td
                 span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
               td

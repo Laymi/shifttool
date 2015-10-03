@@ -20,7 +20,9 @@ Template.Shiftlist.events
     document.getElementById('location').value = document.getElementById(event.target.name + '-' + 'location').innerText
     document.getElementById('start').value = document.getElementById(event.target.name + '-' + 'start').innerText
     document.getElementById('end').value = document.getElementById(event.target.name + '-' + 'end').innerText
-    document.getElementById('info').value = document.getElementById(event.target.name + '-' + 'info').innerText
+    document.getElementById('shiftname').value = document.getElementById(event.target.name + '-' + 'shiftname').innerText
+    document.getElementById('remarks').value = document.getElementById(event.target.name + '-' + 'remarks').innerText
+    document.getElementById('gender').value = document.getElementById(event.target.name + '-' + 'gender').innerText
     document.getElementById('requiredAmountOfStudents').value = document.getElementById(event.target.name + '-' + 'requiredAmountOfStudents').innerText
 
   "click .deletebtn": (event) ->
@@ -36,7 +38,9 @@ Template.Shiftlist.events
         "supervisor" : document.getElementById('supervisor').value
         "supervisorContact" : document.getElementById('supervisorContact').value
         "location" : document.getElementById('location').value
-        "info" : document.getElementById('info').value
+        "shiftname" : document.getElementById('shiftname').value
+        "remarks" : document.getElementById('remarks').value
+        "gender" : document.getElementById('gender').value
         "start": new Date document.getElementById('start').value
         "end": new Date document.getElementById('end').value
         "requiredAmountOfStudents": document.getElementById('requiredAmountOfStudents').value
@@ -49,8 +53,10 @@ Template.Shiftlist.events
     document.getElementById('supervisor').value = ''
     document.getElementById('supervisorContact').value = ''
     document.getElementById('location').value = ''
+    document.getElementById('remarks').value = ''
+    document.getElementById('gender').value = ''
     document.getElementById('start').value = ''
     document.getElementById('end').value = ''
-    document.getElementById('info').value = ''
+    document.getElementById('shiftname').value = ''
     document.getElementById('requiredAmountOfStudents').value = ''
     document.getElementById('_id').value = ''
