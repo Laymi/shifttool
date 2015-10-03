@@ -25,17 +25,19 @@ Meteor.methods
       Trades.insert newTrade
 
       # Notify the recipients that someone has offered on their shift
-      nameOfRecipient = Students.findOne(requestingStudentId).first_name
+      for recipient in recipients
+        nameOfRecipient = Students.findOne(recipient).first_name
+        emailOfRecipient = Students.findOne(recipient).email
 
-      Mandrill.messages.send
-        message:
-          subject: 'You have received a new shift trade offer.'
-          text: "Hello "+nameOfRecipient+", \n\r
-          You have received a new shift trade offer for one of you listed shifts.\n\r
-          Please click on this link to answer the offer: http://shift.whu.edu/acceptTrade/"+newTrade._id+"/ \n\r\n\r
-          The shifttool\n\r
-          Please do not reply to this automatically generated e-mail."
-          from_email: 'service@danielpesch.com'
-          to: [
-              email: 'service@danielpesch.com'
-          ]
+        Mandrill.messages.send
+          message:
+            subject: 'You have received a new shift trade offer.'
+            text: "Hello "+nameOfRecipient+", \n\r
+            You have received a new shift trade offer for one of you listed shifts.\n\r
+            Please click on this link to answer the offer: http://shift.whu.edu/acceptTrade/"+newTrade._id+"/ \n\r\n\r
+            The shifttool\n\r
+            Please do not reply to this automatically generated e-mail."
+            from_email: 'schichtentool@whu.edu'
+            to: [
+                email: emailOfRecipient
+            ]
