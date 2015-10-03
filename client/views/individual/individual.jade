@@ -18,7 +18,8 @@ template(name='Individual')
             tr
               if currentUserIsThisStudent
                 td 
-                  a(id="listShiftForExchange", name="{{_id}}") CHANGE
+                  a(id="listShiftForExchange" href="" title="Click here to list your shift in the shift exchange" name="{{_id}}") 
+                    i.fa.fa-refresh
                   {{_id}}
               else
                 td {{_id}}
