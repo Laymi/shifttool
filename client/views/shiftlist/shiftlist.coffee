@@ -22,7 +22,7 @@ Template.Shiftlist.events
     document.getElementById('end').value = document.getElementById(event.target.name + '-' + 'end').innerText
     document.getElementById('shiftname').value = document.getElementById(event.target.name + '-' + 'shiftname').innerText
     document.getElementById('remarks').value = document.getElementById(event.target.name + '-' + 'remarks').innerText
-    document.getElementById('internalremarks').value = document.getElementById(event.target.name + '-' + 'internalremarks').innerText
+    document.getElementById('gender').value = document.getElementById(event.target.name + '-' + 'gender').innerText
     document.getElementById('requiredAmountOfStudents').value = document.getElementById(event.target.name + '-' + 'requiredAmountOfStudents').innerText
 
   "click .deletebtn": (event) ->
@@ -40,7 +40,7 @@ Template.Shiftlist.events
         "location" : document.getElementById('location').value
         "shiftname" : document.getElementById('shiftname').value
         "remarks" : document.getElementById('remarks').value
-        "internalremarks" : document.getElementById('internalremarks').value
+        "gender" : document.getElementById('gender').value
         "start": new Date document.getElementById('start').value
         "end": new Date document.getElementById('end').value
         "requiredAmountOfStudents": document.getElementById('requiredAmountOfStudents').value
@@ -54,7 +54,7 @@ Template.Shiftlist.events
     document.getElementById('supervisorContact').value = ''
     document.getElementById('location').value = ''
     document.getElementById('remarks').value = ''
-    document.getElementById('internalremarks').value = ''
+    document.getElementById('gender').value = ''
     document.getElementById('start').value = ''
     document.getElementById('end').value = ''
     document.getElementById('shiftname').value = ''
