@@ -15,7 +15,7 @@ Template.Exchange.helpers
     if thisUsersShifts.length then thisUsersShifts else null
 
   exchangableShifts: ->
-    exchangableShifts = Shifts.find(exchangable:true).fetch()
+    exchangableShifts = Shifts.find({'listedAsExchangableBy.0': {$exists: true}}).fetch()
     if exchangableShifts.length then exchangableShifts else null
 
   formatDate: (date) ->
