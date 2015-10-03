@@ -10,8 +10,9 @@ Router.map ->
 # All routes for the normal users
   @route 'home',
   path: '/',
-  waitOn: ->
-    Meteor.subscribe 'allShifts',
+  waitOn: -> [
+    Meteor.subscribe 'allStudents'
+  ]
   cache: true
 
 # Non-Administrative routes
@@ -20,15 +21,20 @@ Router.map ->
 
   @route 'individual',
   path: '/individual/:_id',
-  waitOn: -> Meteor.subscribe 'findAllShiftsForStudent', Router?.current()?.params?._id,
+  waitOn: -> [
+    Meteor.subscribe 'findAllShiftsForStudent', Router?.current()?.params?._id
+    Meteor.subscribe 'allStudents'
+  ]
   cache: false
 
   @route 'publicstatistics',
   path: '/publicstatistics'
 
   @route 'exchange',
-  waitOn: ->
-    Meteor.subscribe 'allShifts',
+  waitOn: -> [
+    Meteor.subscribe 'allShifts'
+    Meteor.subscribe 'allStudents'
+  ]
   path: '/exchange'
 
   @route 'acceptTrade',
@@ -50,11 +56,17 @@ Router.map ->
 
   @route 'assignments',
   path: '/assignments',
-  waitOn: ->
-    Meteor.subscribe 'allShifts',
+  waitOn: -> [
+    Meteor.subscribe 'allShifts'
+    Meteor.subscribe 'allStudents'
+  ]
   cache: false
 
-  @route 'students', path: '/students'
+  @route 'students',
+  waitOn: -> [
+    Meteor.subscribe 'allStudents'
+  ]
+  path: '/students'
 
   @route 'exemptions', path: '/exemptions'
 
