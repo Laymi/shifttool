@@ -1,7 +1,7 @@
 #Meteor.subscribe 'allShifts'
 Template.Individual.helpers
   shifts: ->
-    shifts = Shifts.find().fetch()
+    shifts = Shifts.find('assignedStudents': $in: [ Router?.current()?.params?._id ]).fetch()
     if shifts.length then shifts else null
 
   userId: ->
@@ -21,6 +21,9 @@ Template.Individual.helpers
 
     currentStudentsId = Router?.current()?.params?._id
     currentStudentsEmail = Students.findOne(currentStudentsId).email
+
+    console.log 'currentUsersEmail', currentUsersEmail
+    console.log 'currentStudentsEmail', currentStudentsEmail
 
     return currentUsersEmail == currentStudentsEmail
 
