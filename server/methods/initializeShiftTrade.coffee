@@ -12,31 +12,30 @@ Meteor.methods
     currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
     currentStudentsId = Students.findOne(email:currentUsersEmail)?._id
 
-    unless requestingStudentId == currentStudentsId
-      throw new Meteor.Error("inconsistent data", "The requesting user is not the one who is logged in.");
+    if requestingStudentId == currentStudentsId
+      recipients = Shifts.findOne(shiftOfferedFor).listedAsExchangeableBy
+      # Create Trade Document
+      newTrade =
+        _id: Random.id() # Also the security token. Complexity of 62^17 Should be fine
+        requester: requestingStudentId
+        shiftOfferedFor: shiftOfferedFor
+        shiftOfferedInExchange: shiftOfferedInExchange
+        recipients: recipients # Theoretically redundant but makes later calls much easier
 
-    # Create Trade Document
+      Trades.insert newTrade
 
-    recipients = Shifts.findOne(shiftOfferedFor).listedAsExchangeableBy
+      # Notify the recipients that someone has offered on their shift
+      nameOfRecipient = Students.findOne(requestingStudentId).first_name
 
-    newTrade =
-      _id: Random.id() # Also the security token. Complexity of 62^17 Should be fine
-      requester: requestingStudentId
-      shiftOfferedFor: shiftOfferedFor
-      shiftOfferedInExchange: shiftOfferedInExchange
-      recipients: recipients # Theoretically redundant but makes later calls much easier
-
-    Trades.insert newTrade
-
-    # Notify the recipients that someone has offered on their shift
-
-    # Meteor.call 'sendEmail', 'service@danielpesch.com', 'test@test.test', 'hi', 'Notified moi$'
-
-    Mandrill.messages.send
-      message:
-        subject: 'Test Mail'
-        text: "Example text content"
-        from_email: 'service@danielpesch.com'
-        to: [
-            email: 'service@danielpesch.com'
-        ]
+      Mandrill.messages.send
+        message:
+          subject: 'You have received a new shift trade offer.'
+          text: "Hello "+nameOfRecipient+", \n\r
+          You have received a new shift trade offer for one of you listed shifts.\n\r
+          Please click on this link to answer the offer: http://shift.whu.edu/acceptTrade/"+newTrade._id+"/ \n\r\n\r
+          The shifttool\n\r
+          Please do not reply to this automatically generated e-mail."
+          from_email: 'service@danielpesch.com'
+          to: [
+              email: 'service@danielpesch.com'
+          ]
