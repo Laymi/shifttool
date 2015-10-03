@@ -26,24 +26,38 @@ So everything you have to do is to open the console and type:
 ## Example JSON - Students
 ```
 {
-    "_id" : "LXnceh7kqsRmssMDA"
+    "_id" : "123456789",
+    |"last_name" : "Lastname",
+    |"first_name" : "Firstname",
+    |"email" : "Firstname.Lastname@uni.edu",
+    |"track" : "ABC",
+    |"gender" : "male"
 }
 ```
 ## Example JSON - Shifts
 ```
 {
   "_id":"AXnceh7kqsRmssMDA",
-  "info" : {
+  |"info" : {
     "supervisor":"First Last",
     "supervisorContact":"+123456789",
     "location":"some location",
     "info":"some information"
   },
-  "assignedStudents" : [
+  |"assignedStudents" : [
     "LXnceh7kqsRmssMDA",
     "LXnceh7kqsRmssMDB"
   ],
-  "createdAt":ISODate("2012-12-19T06:01:17.171Z")
+  |"createdAt":ISODate("2012-12-19T06:01:17.171Z")
 }
 ```
->_
+## Example JSON - Trades
+```
+{
+    "_id" : "XTNEjewk4AcHY2hQN",
+    "requester" : "LXnceh7kqsRmssMDB",
+    "shiftOfferedFor" : "keQLpo35giPJu8sSR",
+    "shiftOfferedInExchange" : "keQLpo35giPJu8sSR",
+    "recipients" : ["LXnceh7kqsRmssMDB", "LXnceh7kqsRmssMDC"]
+}
+```
