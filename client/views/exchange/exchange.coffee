@@ -7,11 +7,11 @@ Template.Exchange.helpers
 
   thisUsersShifts: ->
     currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
-    console.log 'currentUsersEmail', currentUsersEmail
+    # console.log 'currentUsersEmail', currentUsersEmail
     currentStudentsId = Students.findOne(email:currentUsersEmail)?._id
-    console.log 'currentStudentsId', currentStudentsId
+    # console.log 'currentStudentsId', currentStudentsId
     thisUsersShifts = Shifts.find('assignedStudents': $in: [ currentStudentsId ]).fetch()
-    console.log 'thisUsersShifts', thisUsersShifts
+    # console.log 'thisUsersShifts', thisUsersShifts
     if thisUsersShifts.length then thisUsersShifts else null
 
   exchangableShifts: ->
@@ -37,22 +37,18 @@ Template.Exchange.events
   "click #makeASpecificOffer": (event) ->
     currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
     currentStudentsId = Students.findOne(email:currentUsersEmail)?._id
+
     # console.log 'student: ', currentStudentsId
     # console.log 'forShift: ', Session.get('shiftToOfferFor')
     # console.log 'offeredShift: ', event.target.name
-    Meteor.call 'initializeShiftTrade', currentStudentsId, Session.get('shiftToOfferFor'),event.target.name
+
+    Meteor.call 'initializeShiftTrade', currentStudentsId, Session.get('shiftToOfferFor'), event.target.name
+
+    # console.log 'location.reload()'
+
+    location.reload()
+
 
   "click #makeAnOffer": (event) ->
     shiftId = event.target.name
     Session.set('shiftToOfferFor', shiftId)
-
-    #I hate this stupid package... will look for a new one later
-    ###MaterializeModal.confirm
-      title: 'Initialize shift exchange'
-      message: 'Do you want to list your shift in the shift exchange?'
-      callback: (yesNo) ->
-          if yesNo
-              Meteor.call "listShiftForExchange", shiftId
-              #Materialize.toast("Glad to here it!", 3000, 'green')
-          else
-              Materialize.toast("Too bad")###

@@ -22,8 +22,8 @@ Template.Individual.helpers
     currentStudentsId = Router?.current()?.params?._id
     currentStudentsEmail = Students.findOne(currentStudentsId).email
 
-    console.log 'currentUsersEmail', currentUsersEmail
-    console.log 'currentStudentsEmail', currentStudentsEmail
+    # console.log 'currentUsersEmail', currentUsersEmail
+    # console.log 'currentStudentsEmail', currentStudentsEmail
 
     return currentUsersEmail == currentStudentsEmail
 
@@ -33,11 +33,10 @@ Template.Individual.rendered = ->
 
 Template.Individual.events
   "click #listShiftForExchange": (event) ->
-    shiftId = event.target.name
+    shiftId = event.currentTarget.name
+    # console.log 'shiftId', shiftId
 
-    console.log 'shiftId', shiftId
-
-    #I hate this stupid package... will look for a new one later
+    #I hate this stupid package... look for a new one later or use leanModal
     MaterializeModal.confirm
       title: 'Initialize shift exchange'
       message: 'Do you want to list your shift in the shift exchange?'
@@ -45,6 +44,5 @@ Template.Individual.events
           if yesNo
               Meteor.call "listShiftForExchange", shiftId, Router?.current()?.params?._id
               Router.go('exchange');
-              #Materialize.toast("Glad to here it!", 3000, 'green')
           else
               Materialize.toast("Too bad")
