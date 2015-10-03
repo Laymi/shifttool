@@ -38,7 +38,7 @@ template(name='Shiftlist')
               td
                 input(type="text",id="remarks")
               td
-                input(type="text",id="gender")
+                input(type="text",id="internalremarks")
               td
                 input(type="text",id="requiredAmountOfStudents")
           each shifts
@@ -60,7 +60,7 @@ template(name='Shiftlist')
               td
                 span(id="{{_id}}-remarks") {{info.remarks}}
               td
-                span(id="{{_id}}-gender") {{info.gender}}
+                span(id="{{_id}}-internalremarks") {{info.internalremarks}}
               td
                 span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
               td
