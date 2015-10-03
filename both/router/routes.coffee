@@ -38,8 +38,9 @@ Router.map ->
   path: '/exchange'
 
   @route 'acceptTrade',
-  waitOn: ->
+  waitOn: -> [
     Meteor.subscribe 'specificTrade', Router?.current()?.params?._id
+  ]
   path: '/acceptTrade/:_id'
 
 # Administrative routes
