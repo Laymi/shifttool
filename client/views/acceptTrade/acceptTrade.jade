@@ -1,0 +1,20 @@
+template(name='acceptTrade')
+  #home
+    h4 Showing all tradable shifts
+    br
+    table
+      thead
+        tr
+          th ID
+          th Requester's ID
+          th Your ID
+          th The shift you give
+          th The shift you get (?)
+      tbody
+        tr
+          td {{trade._id}}
+          td {{trade.requester}}
+          td {{trade.shiftOfferedFor}}
+          td {{trade.shiftOfferedInExchange}}
+          td {{userId}}
+    a(class= "btn modal-trigger" href='#answer-survey-options-modal' id="acceptOffer") Accept Trade
