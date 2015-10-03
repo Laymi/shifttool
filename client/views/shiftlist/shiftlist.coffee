@@ -1,4 +1,3 @@
-#Meteor.subscribe 'allShifts'
 Template.Shiftlist.helpers
   shifts: ->
     shifts = Shifts.find().fetch()
