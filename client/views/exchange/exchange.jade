@@ -2,7 +2,7 @@ template(name='Exchange')
   #home
     h4 Showing all tradable shifts
     br
-    if exchangableShifts
+    if exchangeableShifts
       table
         thead
           tr
@@ -14,7 +14,7 @@ template(name='Exchange')
             th End
             th Info
             th Action
-        each exchangableShifts
+        each exchangeableShifts
           tbody
             tr
               td {{_id}}

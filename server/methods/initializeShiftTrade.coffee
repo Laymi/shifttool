@@ -17,7 +17,7 @@ Meteor.methods
 
     # Create Trade Document
 
-    recipients = Shifts.findOne(shiftOfferedFor).listedAsExchangableBy
+    recipients = Shifts.findOne(shiftOfferedFor).listedAsExchangeableBy
 
     newTrade =
       _id: Random.id() # Also the security token. Complexity of 62^17 Should be fine

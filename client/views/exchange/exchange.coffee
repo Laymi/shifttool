@@ -14,9 +14,9 @@ Template.Exchange.helpers
     # console.log 'thisUsersShifts', thisUsersShifts
     if thisUsersShifts.length then thisUsersShifts else null
 
-  exchangableShifts: ->
-    exchangableShifts = Shifts.find({'listedAsExchangableBy.0': {$exists: true}}).fetch()
-    if exchangableShifts.length then exchangableShifts else null
+  exchangeableShifts: ->
+    exchangeableShifts = Shifts.find({'listedAsExchangeableBy.0': {$exists: true}}).fetch()
+    if exchangeableShifts.length then exchangeableShifts else null
 
   formatDate: (date) ->
     moment(date).format('DD-MM-YYYY hh:mm:ss')

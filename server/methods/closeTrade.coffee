@@ -41,7 +41,7 @@ Meteor.methods
       Shifts.update({_id:trade.shiftOfferedInExchange},{$addToSet: {assignedStudents:studentIdOfTheAcceptingUser}})
 
       # Step 4: Remove the exchange flags for the requester and delete the trade
-      Shifts.update({_id:trade.shiftOfferedInExchange},{$pull: {listedAsExchangableBy:trade.requester}})
-      Shifts.update({_id:trade.shiftOfferedFor},{$pull: {listedAsExchangableBy:studentIdOfTheAcceptingUser}})
+      Shifts.update({_id:trade.shiftOfferedInExchange},{$pull: {listedAsExchangeableBy:trade.requester}})
+      Shifts.update({_id:trade.shiftOfferedFor},{$pull: {listedAsExchangeableBy:studentIdOfTheAcceptingUser}})
 
       Trades.remove(_id:_id)
