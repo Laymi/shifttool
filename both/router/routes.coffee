@@ -13,15 +13,28 @@ Router.map ->
   waitOn: ->
     Meteor.subscribe 'allShifts',
   cache: true
+
 # Non-Administrative routes
-  @route 'login', path: '/login'
+  @route 'login',
+  path: '/login'
 
   @route 'individual',
   path: '/individual/:_id',
   waitOn: -> Meteor.subscribe 'findAllShiftsForStudent', Router?.current()?.params?._id,
   cache: false
 
-  @route 'publicstatistics', path: '/publicstatistics'
+  @route 'publicstatistics',
+  path: '/publicstatistics'
+
+  @route 'exchange',
+  waitOn: ->
+    Meteor.subscribe 'allShifts',
+  path: '/exchange'
+
+  @route 'acceptTrade',
+  waitOn: ->
+    Meteor.subscribe 'specificTrade', Router?.current()?.params?._id
+  path: '/acceptTrade/:_id'
 
 # Administrative routes
   @route 'backend', path: '/backend'

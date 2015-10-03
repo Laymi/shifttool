@@ -16,7 +16,13 @@ template(name='Individual')
         each shifts
           tbody
             tr
-              td {{_id}}
+              if currentUserIsThisStudent
+                td 
+                  a(id="listShiftForExchange" href="" title="Click here to list your shift in the shift exchange" name="{{_id}}") 
+                    i.fa.fa-refresh
+                  {{_id}}
+              else
+                td {{_id}}
               td {{info.supervisor}}
               td {{info.supervisorContact}}
               td {{info.location}}

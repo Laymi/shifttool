@@ -1,0 +1,56 @@
+template(name='Exchange')
+  #home
+    h4 Showing all tradable shifts
+    br
+    if exchangableShifts
+      table
+        thead
+          tr
+            th ID
+            th Supervisor
+            th Supervisor Contact
+            th Location
+            th Start
+            th End
+            th Info
+            th Action
+        each exchangableShifts
+          tbody
+            tr
+              td {{_id}}
+              td {{info.supervisor}}
+              td {{info.supervisorContact}}
+              td {{info.location}}
+              td {{formatDate info.start}}
+              td {{formatDate info.end}}
+              td {{info.info}}
+              td 
+                a(class= "btn modal-trigger" href='#answer-survey-options-modal' id="makeAnOffer", name="{{_id}}") Trade
+      #answer-survey-options-modal.modal
+        .modal-content
+          h4 Which shift do you want to offer in exchange?
+            table(style="width: 100%; font-size: 13px;")
+              thead
+                tr
+                  th ID
+                  th Supervisor
+                  th Supervisor Contact
+                  th Location
+                  th Start
+                  th End
+                  th Info
+                  th Action
+              each thisUsersShifts
+                tbody
+                  tr
+                    td {{_id}}
+                    td {{info.supervisor}}
+                    td {{info.supervisorContact}}
+                    td {{info.location}}
+                    td {{formatDate info.start}}
+                    td {{formatDate info.end}}
+                    td {{info.info}}
+                    td 
+                      a(class= "btn" id="makeASpecificOffer", name="{{_id}}") Offer
+
+      | {{initLeanModal}}
