@@ -7,7 +7,7 @@ Template.Shiftlist.helpers
     Router?.current()?.params?._id
 
   formatDate: (date) ->
-    moment(date).format('MM-DD-YYYY hh:mm:ss')
+    moment(date).subtract(2, 'hours').format('MM-DD-YYYY hh:mm:ss a')
 
 Template.Shiftlist.events
   "click .editbtn": (event) ->

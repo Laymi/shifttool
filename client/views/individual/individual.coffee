@@ -14,7 +14,7 @@ Template.Individual.helpers
     Students.findOne(Router?.current()?.params?._id).last_name
 
   formatDate: (date) ->
-    moment(date).format('DD-MM-YYYY hh:mm:ss')
+    moment(date).subtract(2, 'hours').format('MM-DD-YYYY hh:mm:ss a')
 
   currentUserIsThisStudent: ->
     currentUsersEmail = Meteor.users.findOne(Meteor.userId()).emails[0].address

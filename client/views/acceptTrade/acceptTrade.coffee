@@ -7,7 +7,7 @@ Template.acceptTrade.helpers
     Meteor.userId()
 
   formatDate: (date) ->
-    moment(date).format('DD-MM-YYYY hh:mm:ss')
+    moment(date).subtract(2, 'hours').format('DD-MM-YYYY hh:mm:ss')
 
 Template.acceptTrade.rendered = ->
   document.getElementById('searchStudent')?.value = ''

@@ -1,10 +1,10 @@
 Meteor.subscribe 'allShifts'
 Template.Supervisor.helpers
   formatDate: (date) ->
-    moment(date).format('DD-MM-YY')
+    moment(date).subtract(2, 'hours').format('DD-MM-YY')
 
   formatTime: (date) ->
-    moment(date).format('hh:mm')
+    moment(date).subtract(2, 'hours').format('hh:mm')
 
   supervisor_id: ->
     Router?.current()?.params?._id
