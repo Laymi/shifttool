@@ -1,7 +1,7 @@
 #Meteor.subscribe 'allShifts'
 Template.Individual.helpers
   shifts: ->
-    shifts = Shifts.find('assignedStudents': $in: [ Router?.current()?.params?._id ]).fetch()
+    shifts = Shifts.find({'assignedStudents': $in: [ Router?.current()?.params?._id ]},{sort: {'info.start': 1}}).fetch()
     if shifts.length then shifts else null
 
   userId: ->
