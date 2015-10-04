@@ -17,6 +17,7 @@ template(name='Shiftlist')
             th Remarks
             th Gender
             th # Students
+            th # Assigned
             th Action
         tbody
             tr
@@ -41,6 +42,7 @@ template(name='Shiftlist')
                 input(type="text",id="gender")
               td
                 input(type="text",id="requiredAmountOfStudents")
+              td
           each shifts
             tr
               td
@@ -63,6 +65,8 @@ template(name='Shiftlist')
                 span(id="{{_id}}-gender") {{info.gender}}
               td
                 span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
+              td
+                span {{assignedStudents.length}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
                 a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit
