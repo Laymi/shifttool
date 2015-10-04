@@ -1,6 +1,6 @@
 Template.Shiftlist.helpers
   shifts: ->
-    shifts = Shifts.find().fetch()
+    shifts = Shifts.find({},{sort: {'info.start': 1}}).fetch()
     if shifts.length then shifts else null
 
   userId: ->
