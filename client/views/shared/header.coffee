@@ -12,7 +12,7 @@ Template.Header.events
   'keyup input': (event, template) ->
     if event.target.value != ''
       search = new RegExp(event.target.value, 'i');
-      possibleStudents = Students.find("first_name": search).fetch()
+      possibleStudents = Students.find($or : [{"first_name": search},{"last_name": search}]).fetch()
       Session.set('possibleStudents', possibleStudents)
     else
       Session.set('possibleStudents', undefined)
