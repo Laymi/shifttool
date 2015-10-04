@@ -3,6 +3,27 @@ Meteor.methods
     check shiftId, String
     check studentN, Number
     # To segment the problem a bit further we introduce a helper
+    userHasNoOverlapsWithThisShift = (_id, shiftId) ->
+      check _id, String
+      check shiftId, String
+      alreadyAssignedShifts = Shifts.find({'assignedStudents': $in: [ _id ]}).fetch()
+      potentialNewShift = Shifts.findOne(shiftId)
+
+      potentialNewShiftStartAsUNIX = potentialNewShift.info.start.getTime()
+      # console.log 'potentialNewShiftStartAsUNIX', potentialNewShiftStartAsUNIX
+      potentialNewShiftEndAsUNIX = potentialNewShift.info.end.getTime()
+      # console.log 'potentialNewShiftEndAsUNIX', potentialNewShiftEndAsUNIX
+
+      for alreadyAssignedShift in alreadyAssignedShifts
+        oldShiftStartAsUNIX = alreadyAssignedShift.info.start.getTime()
+        oldShiftEndAsUNIX = alreadyAssignedShift.info.start.getTime()
+        if potentialNewShiftStartAsUNIX > oldShiftStartAsUNIX && potentialNewShiftStartAsUNIX < oldShiftEndAsUNIX
+          return false
+        if potentialNewShiftEndAsUNIX > oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX < oldShiftEndAsUNIX
+          return false
+        if potentialNewShiftStartAsUNIX < oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX > oldShiftEndAsUNIX
+          return false
+      return true
     getNextAvailableStudentForShift = (shiftId) ->
       genderspecification = Shifts.findOne(shiftId)?.info?.gender
       possibleStudentsWithLowestWorkload = []
@@ -20,6 +41,8 @@ Meteor.methods
       for potentialFit in possibleStudentsWithLowestWorkload
         if Shifts.findOne(shiftId).assignedStudents.indexOf(potentialFit._id) == -1
           # console.log 'The student with the lowest workload is:', potentialFit
+          # Commented because we do not care about overlaps right now
+          # if userHasNoOverlapsWithThisShift(potentialFit._id, shiftId)
           return potentialFit
       throw new Meteor.Error 'Insufficient Students - a student can not be divided'
 
