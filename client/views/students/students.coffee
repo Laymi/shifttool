@@ -1,7 +1,7 @@
 #Meteor.subscribe 'allShifts'
 Template.Students.helpers
   students: ->
-    students = Students.find().fetch()
+    students = Students.find({},{sort: {'last_name': 1}}).fetch()
     if students.length then students else null
 
 Template.Students.events
