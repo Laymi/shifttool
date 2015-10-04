@@ -1,5 +1,42 @@
 template(name='Home')
   #home
     h3 Dashboard
-
-    h5 Hello :) This is the home page.
+    if currentUser
+      if currentUserIsThisStudent
+        h4 Shifts for {{first_name}} {{last_name}}
+        br
+        if shifts
+          table
+            thead
+              tr
+                th ID
+                th Shiftname
+                th Remarks
+                th Start
+                th End
+                th Supervisor
+                th Supervisor Contact
+                th Location
+                th Info
+            each shifts
+              tbody
+                tr
+                  if currentUserIsThisStudent
+                    td 
+                      a(id="listShiftForExchange" href="" title="Click here to list your shift in the shift exchange" name="{{_id}}") 
+                        i.fa.fa-refresh
+                      {{_id}}
+                  else
+                    td {{_id}}
+                  td {{info.shiftname}}
+                  td {{info.remarks}}
+                  td {{formatDate info.start}}
+                  td {{formatDate info.end}}
+                  td {{info.supervisor}}
+                  td {{info.supervisorContact}}
+                  td {{info.location}}
+                  td {{info.info}}
+      else
+        h3 Welcome
+    else
+      h3 Please log in
