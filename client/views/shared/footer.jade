@@ -5,6 +5,8 @@ template(name='Footer')
         a(href='{{pathFor "imprint"}}' class='text') Imprint |
         a(href='{{pathFor "privacy"}}' class='text') Privacy |
         a(href='{{pathFor "terms"}}' class='text') Terms |
-        span(class='text') © {{year}} Daniel Pesch | WHU |
+        span(class='text') © {{year}} Daniel Pesch | WHU | 
+        span(class='text' style="color: #8bc521") Contact: 
+          a(href="mailto:schichten@idealab.io" style="color: #8bc521") schichten@idealab.io |
         if currentUser
           a(href='{{pathFor "login"}}' id='logout' class='text' style='color:red') Logout
