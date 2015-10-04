@@ -7,15 +7,17 @@ Meteor.methods
       genderspecification = Shifts.findOne(shiftId)?.info?.gender
       possibleStudentsWithLowestWorkload = []
       if genderspecification == 'male' || genderspecification == "female"
-        console.log 'case1'
-        possibleStudentsWithLowestWorkload = Students.find({ $query: {$and: [{'gender':genderspecification},{$or: [{'exemptionStatus':{$exists: false}},{'exemptionStatus':''}]}]}, $orderby: { workload : 1 }})?.fetch()
+        # console.log 'Case: genderspecific'
+        possibleStudentsWithLowestWorkload = Students.find({ $query: {$and: [{'gender':genderspecification},{$or: [{'exemptionStatus':{$exists: false}},{'exemptionStatus':''}]}]}})?.fetch()
       else
-        console.log 'case2'
+        # console.log 'Case: not genderspecific'
         possibleStudentsWithLowestWorkload = Students.find({ $query: {$or: [{'exemptionStatus':{$exists: false}},{'exemptionStatus':''}]}, $orderby: { workload : 1 }})?.fetch()
 
+      possibleStudentsWithLowestWorkload.sort (a,b) ->
+        return if parseInt(a.workload) >= parseInt(b.workload) then 1 else -1
+      # console.log 'possibleStudentsWithLowestWorkload', possibleStudentsWithLowestWorkload
+
       for potentialFit in possibleStudentsWithLowestWorkload
-        # console.log 'potentialFit._id', potentialFit._id
-        # console.log 'Shifts.findOne(shiftId).assignedStudents', Shifts.findOne(shiftId).assignedStudents
         if Shifts.findOne(shiftId).assignedStudents.indexOf(potentialFit._id) == -1
           # console.log 'The student with the lowest workload is:', potentialFit
           return potentialFit
@@ -29,18 +31,27 @@ Meteor.methods
     # console.log 'validation passed'
 
     for i in [0...studentN]
-      console.log 'in loop', i
+      # console.log 'in loop', i
       nextStudent = getNextAvailableStudentForShift(shiftId)
-      console.log 'nextStudent', nextStudent._id
+      # console.log 'nextStudent', nextStudent._id
       Shifts.update shiftId, $addToSet: assignedStudents:nextStudent?._id
       shift = Shifts.findOne(shiftId)
       shiftDuration = shift.info.end - shift.info.start
       shiftDurationInHours = Math.round(parseInt(shiftDuration)/1000/3600)
-      console.log 'shiftDurationInHours', shiftDurationInHours
-      currentWorkloadOfStudent = Students.findOne(nextStudent?._id).workload or 0
-      console.log 'currentWorkloadOfStudent', currentWorkloadOfStudent
+      # console.log 'shiftDurationInHours', shiftDurationInHours
+      currentWorkloadOfStudent = Students.findOne(nextStudent?._id)?.workload
+      # console.log 'currentWorkloadOfStudent', currentWorkloadOfStudent
+      # console.log 'shiftId', shiftId
+      if !currentWorkloadOfStudent
+        currentWorkloadOfStudent = 0
+      # if currentWorkloadOfStudent < 0
+        # console.log 'ANOMALY:', shiftId, nextStudent?._id
+        # console.log 'user', nextStudent
+        # console.log 'shift', shiftId
+        Meteor.Error 'stop'
+      # console.log 'currentWorkloadOfStudent', currentWorkloadOfStudent
       newWorkloadOfStudent = String(parseInt(currentWorkloadOfStudent) + shiftDurationInHours)
-      console.log 'newWorkloadOfStudent', newWorkloadOfStudent
+      # console.log 'newWorkloadOfStudent', newWorkloadOfStudent
       Students.update({'_id':nextStudent?._id},{$set: {'workload':newWorkloadOfStudent}})
 
       # console.log 'shift.info.end', shift.info.end
@@ -53,4 +64,4 @@ Meteor.methods
     for shift in allShifts
       N = parseInt(shift?.info?.requiredAmountOfStudents) or 0
       Meteor.call 'automaticallyAssignStudentsToShift', String(shift._id), N
-    console.log 'todo'
+    # console.log 'todo'
