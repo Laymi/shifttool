@@ -1,7 +1,7 @@
 Meteor.methods
   'ensureConsistency': ->
     console.log 'ensureConsistency'
-    allShiftStudents = Students.find({$or: [{'exemptionStatus':{$exists: false}},{'exemptionStatus':''}]}).fetch()
+    allShiftStudents = Students.find().fetch()
     console.log 'allShiftStudents', allShiftStudents
     for student in allShiftStudents
       allShiftsTheStudentIsIn = Shifts.find({'assignedStudents': student._id}).fetch()
