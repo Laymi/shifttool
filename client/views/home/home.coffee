@@ -49,7 +49,7 @@ Template.Home.events
 
     userId = Meteor.userId()
     userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
+    studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
 
     #I hate this stupid package... look for a new one later or use leanModal
     MaterializeModal.confirm
