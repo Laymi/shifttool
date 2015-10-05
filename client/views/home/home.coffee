@@ -2,7 +2,7 @@ Template.Home.helpers
   shifts: ->
     userId = Meteor.userId()
     userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
+    studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
 
     shifts = Shifts.find({'assignedStudents': $in: [ studentId ]},{sort: {'info.start': 1}}).fetch()
     if shifts.length then shifts else null
@@ -33,14 +33,14 @@ Template.Home.helpers
 
     userId = Meteor.userId()
     userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
+    studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
 
     currentStudentsEmail = Students.findOne(studentId).email
 
     # console.log 'currentUsersEmail', currentUsersEmail
     # console.log 'currentStudentsEmail', currentStudentsEmail
 
-    return currentUsersEmail == currentStudentsEmail
+    return currentUsersEmail.toLowerCase() == currentStudentsEmail.toLowerCase()
 
 Template.Home.events
   "click #listShiftForExchange": (event) ->

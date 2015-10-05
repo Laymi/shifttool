@@ -8,7 +8,7 @@ Template.Exchange.helpers
   thisUsersShifts: ->
     currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
     # console.log 'currentUsersEmail', currentUsersEmail
-    currentStudentsId = Students.findOne(email:currentUsersEmail)?._id
+    currentStudentsId = Students.findOne('email':{$regex: new RegExp(currentUsersEmail, "i")})?._id
     # console.log 'currentStudentsId', currentStudentsId
     thisUsersShifts = Shifts.find('assignedStudents': $in: [ currentStudentsId ]).fetch()
     # console.log 'thisUsersShifts', thisUsersShifts
@@ -20,14 +20,6 @@ Template.Exchange.helpers
 
   formatDate: (date) ->
     moment(date).subtract(2, 'hours').format('DD-MM-YYYY hh:mm:ss')
-
-  currentUserIsThisStudent: ->
-    currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
-
-    currentStudentsId = Router?.current()?.params?._id
-    currentStudentsEmail = Students.findOne(currentStudentsId)?.email
-
-    return currentUsersEmail == currentStudentsEmail
 
 Template.Exchange.rendered = ->
   document.getElementById('searchStudent')?.value = ''

@@ -25,7 +25,7 @@ Template.Individual.helpers
     # console.log 'currentUsersEmail', currentUsersEmail
     # console.log 'currentStudentsEmail', currentStudentsEmail
 
-    return currentUsersEmail == currentStudentsEmail
+    return currentUsersEmail.toLowerCase() == currentStudentsEmail.toLowerCase()
 
 Template.Individual.rendered = ->
   document.getElementById('searchStudent').value = ''

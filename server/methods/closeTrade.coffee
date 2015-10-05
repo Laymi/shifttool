@@ -8,7 +8,7 @@ Meteor.methods
 
     # Step 1: Validate that the user who wants to close the trade is allowed to
     emailOfMeteorUser = Meteor.users.findOne(accepterId)?.emails?[0]?.address
-    studentIdOfTheAcceptingUser = Students.findOne(email:emailOfMeteorUser)?._id
+    studentIdOfTheAcceptingUser = Students.findOne('email':{$regex: new RegExp(emailOfMeteorUser, "i")})?._id
     allShiftsOfTheAcceptingUser = Shifts.find('assignedStudents': $in: [ studentIdOfTheAcceptingUser ]).fetch()
 
     # console.log 'emailOfMeteorUser', emailOfMeteorUser
