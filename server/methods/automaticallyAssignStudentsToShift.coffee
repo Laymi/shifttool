@@ -4,7 +4,7 @@ Meteor.methods
     check studentN, Number
     # Protect this method
     if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
-      console.log 'yes'
+      # console.log 'yes'
       # To segment the problem a bit further we introduce a helper
       userHasNoOverlapsWithThisShift = (_id, shiftId) ->
         check _id, String
