@@ -11,12 +11,14 @@ template(name='Header')
             if currentUserIsAdmin
               .nav-commands.center
                 a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
+                a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
                 a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
                 a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
                 a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
                 a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
-                
-
+            else
+              .nav-commands.center
+                a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
             li
               input.validate(type='text', placeholder='Search a student',id="searchStudent", style='margin-right: 15px;')
               ul.collection
