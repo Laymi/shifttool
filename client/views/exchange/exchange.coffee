@@ -19,7 +19,7 @@ Template.Exchange.helpers
     if exchangeableShifts.length then exchangeableShifts else null
 
   formatDate: (date) ->
-    moment(date).subtract(2, 'hours').format('DD-MM-YYYY hh:mm:ss')
+    moment(date).subtract(2, 'hours').format('DD-MM-YYYY hh:mm:ss a')
 
 Template.Exchange.rendered = ->
   document.getElementById('searchStudent')?.value = ''
