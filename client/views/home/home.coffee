@@ -10,13 +10,13 @@ Template.Home.helpers
   first_name: ->
     userId = Meteor.userId()
     userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    studentId = Students.findOne('email':userEmail)?._id
+    studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
     Students.findOne(studentId)?.first_name
 
   last_name: ->
     userId = Meteor.userId()
     userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    studentId = Students.findOne('email':userEmail)?._id
+    studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
     Students.findOne(studentId)?.last_name
 
   formatDate: (date) ->
