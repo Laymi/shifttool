@@ -32,7 +32,7 @@ Template.Home.helpers
     currentUsersEmail = Meteor.users.findOne(Meteor.userId()).emails[0].address
 
     userId = Meteor.userId()
-    userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
+    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
     studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
 
     currentStudentsEmail = Students.findOne(studentId).email
