@@ -29,6 +29,24 @@ template(name='Supervisor')
         th Time
         th Name
         th Attended
+      each supervisorShifts
+        // loop students for(i=0;i<assignedStudents.length;i++)
+          tbody
+              td
+                {_id}}
+              td
+                {{formatDate info.start}}
+              td
+                {{formatTime info.start}} + ' - ' + {{formatTime info.end}}
+              td
+                //Students.findOne(assignedStudents[i]).first_name + ' ' + Students.findOne(assignedStudents[i]).last_name
+              td
+                input(type="checkbox", id="Yes", value="Yes", name="Yes", checked = false)
+                input(type="checkbox", id="No", value="No", name="No", checked = true)
+
+      br     
+      a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save
+
       tbody
         each shifts          
           td
@@ -40,5 +58,4 @@ template(name='Supervisor')
           td
             input(type="checkbox" id="Yes" value="No")
             input(type="checkbox" id="No" value="Yes")
-    a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save
-        
+    a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save        

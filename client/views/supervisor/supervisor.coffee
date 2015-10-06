@@ -12,9 +12,9 @@ Template.Supervisor.helpers
   supervisor_name: ->
     Students.findOne(Router?.current()?.params?._id).first_name + ' ' + Students.findOne(Router?.current()?.params?._id).last_name
 
-  shifts: ->
-    shifts = Shifts.find().fetch()
-    if shifts.length then shifts else null
+  supervisorShifts: ->
+    supvervisorShifts = Shifts.find(info.supervisor = 'Peter Lustig').fetch()
+    if supervisorShifts.length then supervisorShifts else null
 
 Template.Supervisor.events
   "click .editbtn": (event) ->
