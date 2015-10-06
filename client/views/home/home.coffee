@@ -7,23 +7,17 @@ Template.Home.helpers
     shifts = Shifts.find({'assignedStudents': $in: [ studentId ]},{sort: {'info.start': 1}}).fetch()
     if shifts.length then shifts else null
 
-  userId: ->
-    userId = Meteor.userId()
-    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
-    studentId
-
   first_name: ->
     userId = Meteor.userId()
     userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
-    Students.findOne(studentId).first_name
+    studentId = Students.findOne('email':userEmail)?._id
+    Students.findOne(studentId)?.first_name
 
   last_name: ->
     userId = Meteor.userId()
     userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    studentId = Students.findOne('emails':userEmail)._id
-    Students.findOne(studentId).last_name
+    studentId = Students.findOne('email':userEmail)?._id
+    Students.findOne(studentId)?.last_name
 
   formatDate: (date) ->
     moment(date).subtract(2, 'hours').format('MM-DD-YYYY hh:mm:ss a')
@@ -38,7 +32,7 @@ Template.Home.helpers
     studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
     # console.log 'studentId', studentId
 
-    currentStudentsEmail = Students.findOne(studentId).email
+    currentStudentsEmail = Students.findOne(studentId)?.email
 
     # console.log 'currentUsersEmail', currentUsersEmail
     # console.log 'currentStudentsEmail', currentStudentsEmail
