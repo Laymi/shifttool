@@ -8,6 +8,9 @@ Template.Header.helpers
   currentUserIsAdmin: ->
     return Meteor.user()?.profile?.role == 'admin'
 
+  currentUserIsSupervisor: ->
+    return Meteor.user()?.profile?.role == 'supervisor'
+
 Template.Header.events
   'keyup input': (event, template) ->
     if event.target.value != ''

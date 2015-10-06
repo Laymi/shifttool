@@ -1,61 +1,48 @@
 template(name='Supervisor')
-  #users
+  #shiftlist
     h3 Supervisor
-    h5 Showing assigned shifts
-    br
-    br
-    table 
-      thead
-        th(style="width:15%;") Supervisor
-        th Date
-      tbody
-        td 
-          select
-            option(value="Default") Default
-            option(value="Supervisor1") Supervisor1
-            option(value="Supervisor2") Supervisor2
-            option(value="Supervisor3") Supervisor3
-        td
-          select
-            option(value="Yesterday") Yesterday
-            option(value="Today") Today
-            option(value="Tomorrow") Tomorrow
-            option(value="Date3") Date3
-            option(value="Date4") Date4
-    table
-      thead
-        th Shift
-        th Date
-        th Time
-        th Name
-        th Attended
-      each supervisorShifts
-        // loop students for(i=0;i<assignedStudents.length;i++)
-          tbody
-              td
-                {_id}}
-              td
-                {{formatDate info.start}}
-              td
-                {{formatTime info.start}} + ' - ' + {{formatTime info.end}}
-              td
-                //Students.findOne(assignedStudents[i]).first_name + ' ' + Students.findOne(assignedStudents[i]).last_name
-              td
-                input(type="checkbox", id="Yes", value="Yes", name="Yes", checked = false)
-                input(type="checkbox", id="No", value="No", name="No", checked = true)
+    if shifts
+      h5 Showing global Supervisor
 
-      br     
-      a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save
-
-      tbody
-        each shifts          
-          td
-            span(id="{{_id}}-_id") {{_id}}
-          td
-            span(id="{{_id}}-start") {{formatDate info.start}}
-          td {{formatTime info.start}} + ' - ' + {{formatTime info.end}}
-          td
-          td
-            input(type="checkbox" id="Yes" value="No")
-            input(type="checkbox" id="No" value="Yes")
-    a(class='waves-effect waves-light btn', id='saveStudentsCheck') Save        
+      table
+        thead
+          tr
+            th ID
+            th Supervisor
+            th Supervisor Contact
+            th Location
+            th Start
+            th End
+            th Info
+            th Remarks
+            th Gender
+            th # Students
+            th # Assigned
+            th Supervise
+        tbody
+          each shifts
+            tr
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-supervisor") {{info.supervisor}}
+              td
+                span(id="{{_id}}-supervisorContact") {{info.supervisorContact}}
+              td
+                span(id="{{_id}}-location") {{info.location}}
+              td
+                span(id="{{_id}}-start") {{formatDate info.start}}
+              td
+                span(id="{{_id}}-end") {{formatDate info.end}}
+              td
+                span(id="{{_id}}-info") {{info.info}}
+              td
+                span(id="{{_id}}-remarks") {{info.remarks}}
+              td
+                span(id="{{_id}}-gender") {{info.gender}}
+              td
+                span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
+              td
+                span {{assignedStudents.length}}
+              td
+                a(class='waves-effect waves-light btn ', href="{{pathFor 'supervisorDetail'}}") Open

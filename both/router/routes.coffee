@@ -73,7 +73,18 @@ Router.map ->
 
   @route 'logs', path: '/logs'
 
-  @route 'supervisor', path: '/supervisor'
+  @route 'supervisor',
+  waitOn: -> [
+    Meteor.subscribe 'allShifts'
+  ]
+  path: '/supervisor'
+
+  @route 'supervisorDetail',
+  waitOn: -> [
+    Meteor.subscribe 'allShifts'
+    Meteor.subscribe 'allStudents'
+  ]
+  path: '/supervisor/:_id'
 
   @route 'help', path: '/help'
 
