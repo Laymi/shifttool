@@ -9,19 +9,19 @@ Template.Home.helpers
 
   userId: ->
     userId = Meteor.userId()
-    userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
+    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
     studentId = Students.findOne('emails':userEmail)._id
     studentId
 
   first_name: ->
     userId = Meteor.userId()
-    userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
+    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
     studentId = Students.findOne('emails':userEmail)._id
     Students.findOne(studentId).first_name
 
   last_name: ->
     userId = Meteor.userId()
-    userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
+    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
     studentId = Students.findOne('emails':userEmail)._id
     Students.findOne(studentId).last_name
 
