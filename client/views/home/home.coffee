@@ -1,7 +1,7 @@
 Template.Home.helpers
   shifts: ->
     userId = Meteor.userId()
-    userEmail = Meteor.users.find(userId)?.fetch()?.emails?[0]?.address
+    userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
     studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
 
     shifts = Shifts.find({'assignedStudents': $in: [ studentId ]},{sort: {'info.start': 1}}).fetch()
@@ -32,16 +32,16 @@ Template.Home.helpers
     currentUsersEmail = Meteor.users.findOne(Meteor.userId()).emails[0].address
 
     userId = Meteor.userId()
-    console.log 'userId', userId
+    # console.log 'userId', userId
     userEmail = Meteor.users.findOne(userId)?.emails?[0]?.address
-    console.log 'userEmail', userEmail
+    # console.log 'userEmail', userEmail
     studentId = Students.findOne('email':{$regex: new RegExp(userEmail, "i")})?._id
-    console.log 'studentId', studentId
+    # console.log 'studentId', studentId
 
     currentStudentsEmail = Students.findOne(studentId).email
 
-    console.log 'currentUsersEmail', currentUsersEmail
-    console.log 'currentStudentsEmail', currentStudentsEmail
+    # console.log 'currentUsersEmail', currentUsersEmail
+    # console.log 'currentStudentsEmail', currentStudentsEmail
 
     return currentUsersEmail.toLowerCase() == currentStudentsEmail.toLowerCase()
 
