@@ -89,6 +89,9 @@ Meteor.methods
     if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
       allShifts = Shifts.find().fetch()
       for shift in allShifts
-        N = parseInt(shift?.info?.requiredAmountOfStudents) or 0
-        Meteor.call 'automaticallyAssignStudentsToShift', String(shift._id), N
+        N = 0
+        N += parseInt(shift?.info?.requiredAmountOfStudents)
+        N -= parseInt(shift?.assignedStudents?.length)
+        if N > 0
+          Meteor.call 'automaticallyAssignStudentsToShift', String(shift._id), parseInt(N)
       # console.log 'todo'
