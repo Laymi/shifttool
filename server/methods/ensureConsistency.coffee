@@ -19,6 +19,6 @@ Meteor.methods
           Students.update({'_id':student._id},{$set: 'workload':newWorkloadOfStudent})
       # console.log 'done'
 
-    'deleteEveryAssignment': ->
-      if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
-        Shifts.update({},{$set: {'assignedStudents':[]}},{multi: true})
+  'deleteEveryAssignment': ->
+    if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
+      Shifts.update({},{$set: {'assignedStudents':[]}},{multi: true})
