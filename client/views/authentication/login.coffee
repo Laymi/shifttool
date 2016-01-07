@@ -34,3 +34,5 @@ Template.Login.events
         console.log err.reason
       else
         Meteor.loginWithPassword data.email+'@whu.edu', data.password###
+
+    Router.go('/')
