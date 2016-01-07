@@ -35,3 +35,15 @@ Meteor.methods
       password: 'test1234'
 
     console.log 'test@test.de', 'test1234'
+
+  updateTimezone: ->
+    if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
+      allShifts = Shifts.find().fetch()
+      for shift in allShifts
+        info = shift?.info
+
+        info.start = new Date(info.start.setHours(info.start.getHours()+1))
+        info.end = new Date(info.end.setHours(info.end.getHours()+1))
+
+        Shifts.update shift._id, $set: info:info
+
