@@ -45,3 +45,16 @@ Meteor.methods
       Shifts.update({_id:trade.shiftOfferedFor},{$pull: {listedAsExchangeableBy:studentIdOfTheAcceptingUser}})
 
       Trades.remove(_id:_id)
+
+  'manuallyDoTrade': (student1, student2, shift1, shift2) ->
+    if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'
+      check student1, String
+      check student2, String
+      check shift1, String
+      check shift2, String
+
+      Shifts.update({_id:shift1},{$pull: {assignedStudents:student1}})
+      Shifts.update({_id:shift2},{$pull: {assignedStudents:student2}})
+
+      Shifts.update({_id:shift1},{$addToSet: {assignedStudents:student2}})
+      Shifts.update({_id:shift2},{$addToSet: {assignedStudents:student1}})
