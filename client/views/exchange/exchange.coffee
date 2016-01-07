@@ -34,7 +34,7 @@ Template.Exchange.events
     # console.log 'forShift: ', Session.get('shiftToOfferFor')
     # console.log 'offeredShift: ', event.target.name
 
-    Meteor.call 'initializeShiftTrade', currentStudentsId, Session.get('shiftToOfferFor'), event.target.name
+    Meteor.call 'initializeShiftTrade', Session.get('shiftToOfferFor'), event.target.name
 
     # console.log 'location.reload()'
 
