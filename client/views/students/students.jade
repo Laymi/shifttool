@@ -25,6 +25,8 @@ template(name='Students')
               td
                 input(type="text",id="last_name")
               td
+                input(type="text",id="mobile", disabled)
+              td
                 input(type="text",id="workload", disabled)
               td
                 input(type="text",id="exemptionStatus")
@@ -39,6 +41,8 @@ template(name='Students')
                 span(id="{{_id}}-first_name") {{first_name}}
               td
                 span(id="{{_id}}-last_name") {{last_name}}
+              td
+                span(id="{{_id}}-last_name") {{mobile}}
               td
                 span(id="{{_id}}-workload") {{workload}}
               td
