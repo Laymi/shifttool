@@ -5,6 +5,8 @@ template(name='Footer')
         a(href='{{pathFor "imprint"}}' class='text') Imprint |
         a(href='{{pathFor "privacy"}}' class='text') Privacy |
         a(href='{{pathFor "terms"}}' class='text') Terms |
-        span(class='text') © {{year}} Daniel Pesch | WHU |
+        span(class='text') © {{year}} Daniel Pesch | WHU | 
+        span(class='text' style="") Contact: 
+          a(href="mailto:tim.hunnekuhl@whu.edu" style="color: #4b96cd") tim.hunnekuhl@whu.edu |
         if currentUser
-          a(href='{{pathFor "login"}}' id='logout' class='text' style='color:red') Logout
+          a(href='{{pathFor "login"}}' id='logout' class='text' style='color:#4b96cd') Logout

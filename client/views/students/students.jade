@@ -13,6 +13,7 @@ template(name='Students')
             th Last Name
             th Workload
             th ExemptionStatus
+            th Gender
             th Action
         tbody
             tr
@@ -24,9 +25,13 @@ template(name='Students')
               td
                 input(type="text",id="last_name")
               td
+                input(type="text",id="mobile", disabled)
+              td
                 input(type="text",id="workload", disabled)
               td
                 input(type="text",id="exemptionStatus")
+              td
+                input(type="text",id="gender")
               td
           each students
             tr
@@ -37,9 +42,13 @@ template(name='Students')
               td
                 span(id="{{_id}}-last_name") {{last_name}}
               td
+                span(id="{{_id}}-last_name") {{mobile}}
+              td
                 span(id="{{_id}}-workload") {{workload}}
               td
                 span(id="{{_id}}-exemptionStatus") {{exemptionStatus}}
+              td
+                span(id="{{_id}}-gender") {{gender}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
                 a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit
