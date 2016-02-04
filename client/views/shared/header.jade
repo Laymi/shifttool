@@ -10,13 +10,20 @@ template(name='Header')
           if currentUser
             if currentUserIsAdmin
               .nav-commands.center
-                a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
-                a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
-                a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left") Supervisor
-                a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
-                a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
-                a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
-                a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
+                li
+                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
+                li
+                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
+                li
+                  a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left") Supervisor
+                li
+                  a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
+                li
+                  a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
+                li
+                  a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
+                li
+                  a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
             else
               if currentUserIsSupervisor
                 .nav-commands.center
@@ -26,7 +33,7 @@ template(name='Header')
                 .nav-commands.center
                   a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
             li
-              input.validate(type='text', placeholder='Search a student',id="searchStudent", style='margin-right: 15px;')
+              input.validate(type='text', placeholder='Search a student',id="searchStudent")
               ul.collection
                 each candidate
                   li.collection-item(style='float:none;')

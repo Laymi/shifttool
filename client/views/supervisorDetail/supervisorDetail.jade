@@ -6,11 +6,9 @@ template(name='supervisorDetail')
       table
         thead
           tr
-            th ID
             th First name
             th Last name
             th Track
-            th Gender
             th Email
             th Mark as attendant
             th Mark as away
@@ -19,15 +17,11 @@ template(name='supervisorDetail')
           each shift.assignedStudents
             tr
               td
-                span(id="{{_id}}-_id") {{this}}
-              td
                 span(id="{{_id}}-first_name") {{getAttributeOfStudent 'first_name' this}}
               td
                 span(id="{{_id}}-last_name") {{getAttributeOfStudent 'last_name' this}}
               td
                 span(id="{{_id}}-track") {{getAttributeOfStudent 'track' this}}
-              td
-                span(id="{{_id}}-gender") {{getAttributeOfStudent 'gender' this}}
               td
                 span(id="{{_id}}-email") {{getAttributeOfStudent 'email' this}}
               td

@@ -9,13 +9,11 @@ template(name='Supervisor')
           tr
             th ID
             th Supervisor
-            th Supervisor Contact
+            th Contact
             th Location
             th Start
             th End
-            th Info
             th Remarks
-            th Gender
             th # Students
             th # Assigned
             th Supervise
@@ -35,11 +33,7 @@ template(name='Supervisor')
               td
                 span(id="{{_id}}-end") {{formatDate info.end}}
               td
-                span(id="{{_id}}-info") {{info.info}}
-              td
                 span(id="{{_id}}-remarks") {{info.remarks}}
-              td
-                span(id="{{_id}}-gender") {{info.gender}}
               td
                 span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
               td
