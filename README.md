@@ -22,8 +22,8 @@ Open a command prompt, navigate to the folder and type 'meteor' to start the app
 # Getting started
 You find some example JSONs for the important collections below but for convenience I added a method to automatically populate the database for you.
 So everything you have to do is to open the console and type:
-`Meteor.call('populateDatabase', N)` <br/> N = Amount of students and shifts to add <br/>
-In order to add the first user open the console and type:
+`Meteor.call('populateDatabase', N)` <br/> N = Amount of students and shifts to add <br/><br/>
+In order to create the first user open the console and type:
 `Meteor.call(‚createExampleUser‘)` <br/>
 Login credentials: <br/>
 email: 'test1337@test.test' <br/>
