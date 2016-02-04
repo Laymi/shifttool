@@ -12,7 +12,6 @@ template(name='supervisorDetail')
             th Email
             th Mark as attendant
             th Mark as away
-            th Mark as tech savvy
         tbody
           each shift.assignedStudents
             tr
@@ -35,10 +34,4 @@ template(name='supervisorDetail')
                   if studentIsMarkedAsAway this
                     a(class="markStudentAsAway" href='' name="{{this}}") Marked as away
                   else
-                    a(class="markStudentAsAway" href='' name="{{this}}") Click to mark
-              td
-                span(id="{{_id}}-tech") 
-                if studentIsMarkedAsTechSavvy this
-                  a(class="markStudentAsTechSavvy" href='' name="{{this}}") Marked as tech savvy
-                else
-                  a(class="markStudentAsTechSavvy" href='' name="{{this}}") Click to mark
+                    a(class="markStudentAsAway" href='' name="{{this}}") Click to mark          
