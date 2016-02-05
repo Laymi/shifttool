@@ -69,6 +69,9 @@ Router.map ->
   ]
   path: '/students'
 
+  @route 'profile',
+  path: '/profile/:id'
+
   @route 'exemptions', path: '/exemptions'
 
   @route 'logs', path: '/logs'
