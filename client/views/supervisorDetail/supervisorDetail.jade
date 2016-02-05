@@ -16,7 +16,8 @@ template(name='supervisorDetail')
           each shift.assignedStudents
             tr
               td
-                span(id="{{_id}}-first_name") {{getAttributeOfStudent 'first_name' this}}
+                a(href="/profile/{{getAttributeOfStudent '_id' this}}")
+                  span(id="{{_id}}-first_name") {{getAttributeOfStudent 'first_name' this}}
               td
                 span(id="{{_id}}-last_name") {{getAttributeOfStudent 'last_name' this}}
               td
@@ -34,4 +35,4 @@ template(name='supervisorDetail')
                   if studentIsMarkedAsAway this
                     a(class="markStudentAsAway" href='' name="{{this}}") Marked as away
                   else
-                    a(class="markStudentAsAway" href='' name="{{this}}") Click to mark          
+                    a(class="markStudentAsAway" href='' name="{{this}}") Click to mark

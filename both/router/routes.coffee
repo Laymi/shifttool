@@ -70,7 +70,10 @@ Router.map ->
   path: '/students'
 
   @route 'profile',
-  path: '/profile/:id'
+  path: '/profile/:_id',
+  data: -> [
+    Students.findOne(this.params._id)
+  ]
 
   @route 'exemptions', path: '/exemptions'
 

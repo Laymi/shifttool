@@ -1,5 +1,4 @@
-#Meteor.subscribe 'allShifts'
-Template.profile.helpers
+Template.Profile.helpers
  
   userId: ->
     Router?.current()?.params?._id
