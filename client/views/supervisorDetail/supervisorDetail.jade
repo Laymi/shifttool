@@ -6,12 +6,12 @@ template(name='supervisorDetail')
       table
         thead
           tr
-            th First name
-            th Last name
-            th Track
-            th Email
-            th Mark as attendant
-            th Mark as away
+            th(width = "20%") First name
+            th(width = "20%") Last name
+            th(width = "22%") Email
+            th(width = "8%") Track
+            th(width = "15%") Mark as attendant
+            th(width = "15%") Mark as away
         tbody
           each shift.assignedStudents
             tr
@@ -21,9 +21,9 @@ template(name='supervisorDetail')
               td
                 span(id="{{_id}}-last_name") {{getAttributeOfStudent 'last_name' this}}
               td
-                span(id="{{_id}}-track") {{getAttributeOfStudent 'track' this}}
+                span(id="{{_id}}-track") {{getAttributeOfStudent 'email' this}}
               td
-                span(id="{{_id}}-email") {{getAttributeOfStudent 'email' this}}
+                span(id="{{_id}}-email") {{getAttributeOfStudent 'track' this}}
               td
                 span(id="{{_id}}-attendant")   
                   if studentIsMarkedAsAttendant this
