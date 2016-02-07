@@ -1,0 +1,27 @@
+template(name='student_profile')
+  #home
+    h4 Profile for {{first_name}} {{last_name}}
+    br
+    table
+      thead
+        tr
+          td(width = "10%") First name:
+          td(width = "15%") {{first_name}}
+          td(width = "10%") Last name:
+          td(width = "15%") {{last_name}}
+        tr
+          td(width = "10%") Gender:
+          td(width = "15%") {{gender}}
+          td(width = "10%") Track:
+          td(width = "15%") {{track}}
+        tr
+          td(width = "10%") Email:
+          td(width = "15%") {{email}}
+          td(width = "10%") Mobile phone:
+          td(width = "15%") {{mobile}}
+        tr
+          td(width = "10%") Exemption status:
+          td(width = "15%") {{exemption_status}}
+          td(width = "10%") Workload:
+          td(width = "15%") {{workload}}
+

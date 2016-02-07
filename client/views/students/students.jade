@@ -36,7 +36,8 @@ template(name='Students')
           each students
             tr
               td
-                span(id="{{_id}}-_id") {{_id}}
+                a(href="/profile/{{_id}}")
+                  span(id="{{_id}}-_id") {{_id}}
               td
                 span(id="{{_id}}-first_name") {{first_name}}
               td

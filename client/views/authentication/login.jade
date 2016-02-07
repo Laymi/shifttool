@@ -2,8 +2,10 @@ template(name='Login')
   #loginWrapper
     #loginWindow  
       br
-      h3 Login Stuff
+      h3 Login
+      h5 Please log in with your WHU credentials
+      br
       form(method="get", action="")
-        input(type="text",id="email", autofocus)
-        input(type="password",id="password")
+        input(type="text",id="email", placeholder="firstname.lastname", autofocus)
+        input(type="password", placeholder="password", id="password")
         input(type="submit", style="font-size:2em", class='waves-effect waves-light btn', id='loginUser', value="Login")
