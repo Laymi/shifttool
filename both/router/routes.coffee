@@ -71,8 +71,9 @@ Router.map ->
 
   @route 'profile',
   path: '/profile/:_id',
-  data: -> [
-    Students.findOne(this.params._id)
+  template: 'student_profile',
+  waitOn: -> [
+    Meteor.subscribe 'allStudents'
   ]
 
   @route 'exemptions', path: '/exemptions'
