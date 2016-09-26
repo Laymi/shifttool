@@ -28,24 +28,6 @@ template(name='Assignments')
       table
         tbody
           td(style="width:50%; vertical-align: text-top;")
-            h6 Students
-            table
-              thead
-                tr
-                  th ID
-                  th First Name
-                  th Last Name
-                  th Workload
-                  th ExemptionStatus
-              tbody
-                each students
-                  tr
-                    td {{_id}}
-                    td {{first_name}}
-                    td {{last_name}}
-                    td {{workload}}
-                    td {{exemptionStatus}}
-          td(style="width:50%; vertical-align: text-top;")
             h6 Shifts
             table
               thead
@@ -69,3 +51,21 @@ template(name='Assignments')
                     td {{formatDate info.end}}
                     td {{info.info}}
                     td {{info.requiredAmountOfStudents}}
+          td(style="width:50%; vertical-align: text-top;")
+            h6 Students
+            table
+              thead
+                tr
+                  th ID
+                  th First Name
+                  th Last Name
+                  th Workload
+                  th ExemptionStatus
+              tbody
+                each students
+                  tr
+                    td {{_id}}
+                    td {{first_name}}
+                    td {{last_name}}
+                    td {{workload}}
+                    td {{exemptionStatus}}

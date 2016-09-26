@@ -8,7 +8,7 @@ Template.Assignments.helpers
     Router?.current()?.params?._id
 
   formatDate: (date) ->
-    moment(date).format('MM-DD-YYYY hh:mm:ss')
+    moment(date).subtract(2, 'hours').format('MM-DD-YYYY hh:mm:ss a')
 
   students: ->
     students = Students.find().fetch()
@@ -27,6 +27,8 @@ Template.Assignments.events
         toastr.error err.error
       else
         toastr.success 'Ok.'
+        document.getElementById('automaticShiftSelection').value = ''
+        document.getElementById('studentN').value = ''
 
   'focus #studentN': ->
     studentN.value = Shifts.findOne(automaticShiftSelection.value)?.workload or ''

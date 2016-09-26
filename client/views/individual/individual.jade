@@ -1,25 +1,31 @@
 template(name='Individual')
   #home
-    h3 Showing individual shifts for {{first_name}} {{last_name}}
-
+    h4 Shifts for {{first_name}} {{last_name}}
+    br
     if shifts
       table
         thead
           tr
             th ID
+            th Remarks
+            th Start
+            th End
             th Supervisor
             th Contact
             th Location
-            th Start
-            th End
-            th Info
         each shifts
           tbody
             tr
+              if currentUserIsThisStudent
+                td 
+                  a(id="listShiftForExchange" href="" title="Click here to list your shift in the shift exchange" name="{{_id}}") 
+                    i.fa.fa-refresh
+                  {{_id}}
+              else
               td {{_id}}
+              td {{info.remarks}}
+              td {{formatDate info.start}}
+              td {{formatDate info.end}}
               td {{info.supervisor}}
               td {{info.supervisorContact}}
               td {{info.location}}
-              td {{formatDate info.start}}
-              td {{formatDate info.end}}
-              td {{info.info}}

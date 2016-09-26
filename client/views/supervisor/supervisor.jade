@@ -1,0 +1,42 @@
+template(name='Supervisor')
+  #shiftlist
+    h3 Supervisor
+    if shifts
+      h5 Showing global Supervisor
+
+      table
+        thead
+          tr
+            th ID
+            th Supervisor
+            th Contact
+            th Location
+            th Start
+            th End
+            th Remarks
+            th # Students
+            th # Assigned
+            th Supervise
+        tbody
+          each shifts
+            tr
+              td
+                span(id="{{_id}}-_id") {{_id}}
+              td
+                span(id="{{_id}}-supervisor") {{info.supervisor}}
+              td
+                span(id="{{_id}}-supervisorContact") {{info.supervisorContact}}
+              td
+                span(id="{{_id}}-location") {{info.location}}
+              td
+                span(id="{{_id}}-start") {{formatDate info.start}}
+              td
+                span(id="{{_id}}-end") {{formatDate info.end}}
+              td
+                span(id="{{_id}}-remarks") {{info.remarks}}
+              td
+                span(id="{{_id}}-requiredAmountOfStudents") {{info.requiredAmountOfStudents}}
+              td
+                span {{assignedStudents.length}}
+              td
+                a(class='waves-effect waves-light btn ', href="{{pathFor 'supervisorDetail'}}") Open

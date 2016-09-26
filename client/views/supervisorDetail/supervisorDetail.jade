@@ -1,0 +1,38 @@
+template(name='supervisorDetail')
+  #shiftlist
+    if shift
+      h5 Showing students for Shift {{shift.info.info}}
+
+      table
+        thead
+          tr
+            th(width = "20%") First name
+            th(width = "20%") Last name
+            th(width = "22%") Email
+            th(width = "8%") Track
+            th(width = "15%") Mark as attendant
+            th(width = "15%") Mark as away
+        tbody
+          each shift.assignedStudents
+            tr
+              td
+                a(href="/profile/{{getAttributeOfStudent '_id' this}}")
+                  span(id="{{_id}}-first_name") {{getAttributeOfStudent 'first_name' this}}
+              td
+                span(id="{{_id}}-last_name") {{getAttributeOfStudent 'last_name' this}}
+              td
+                span(id="{{_id}}-track") {{getAttributeOfStudent 'email' this}}
+              td
+                span(id="{{_id}}-email") {{getAttributeOfStudent 'track' this}}
+              td
+                span(id="{{_id}}-attendant")   
+                  if studentIsMarkedAsAttendant this
+                    a(class="markStudentAsAttendant" href='' name="{{this}}") Marked as attendant
+                  else
+                    a(class="markStudentAsAttendant" href='' name="{{this}}") Click to mark
+              td
+                span(id="{{_id}}-away") 
+                  if studentIsMarkedAsAway this
+                    a(class="markStudentAsAway" href='' name="{{this}}") Marked as away
+                  else
+                    a(class="markStudentAsAway" href='' name="{{this}}") Click to mark

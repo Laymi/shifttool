@@ -13,7 +13,8 @@ template(name='Students')
             th Last Name
             th Workload
             th ExemptionStatus
-            th Delete/Edit
+            th Gender
+            th Action
         tbody
             tr
               td
@@ -24,14 +25,19 @@ template(name='Students')
               td
                 input(type="text",id="last_name")
               td
+                input(type="text",id="mobile", disabled)
+              td
                 input(type="text",id="workload", disabled)
               td
                 input(type="text",id="exemptionStatus")
               td
+                input(type="text",id="gender")
+              td
           each students
             tr
               td
-                span(id="{{_id}}-_id") {{_id}}
+                a(href="/profile/{{_id}}")
+                  span(id="{{_id}}-_id") {{_id}}
               td
                 span(id="{{_id}}-first_name") {{first_name}}
               td
@@ -40,6 +46,10 @@ template(name='Students')
                 span(id="{{_id}}-workload") {{workload}}
               td
                 span(id="{{_id}}-exemptionStatus") {{exemptionStatus}}
+              td
+                span(id="{{_id}}-gender") {{gender}}
+              td
+                span(id="{{_id}}-action") {{action}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
                 a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit

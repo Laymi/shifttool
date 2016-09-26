@@ -4,29 +4,40 @@ template(name='Header')
       div.nav-wrapper.primaryColor
 
         a(href='{{pathFor "home"}}')
-          img(src='/img/nyc_main.jpg' style='height: 75%; margin-top: 10px;padding-left: 20px')
+          img(src='/img/shifttool_logo.png' style='height: 75%; margin-top: 10px;')
 
         ul.right
           if currentUser
-            .nav-commands.center
-              a(href="{{pathFor 'home'}}")
-                i.fa.fa-home.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'shiftlist'}}")
-                i.fa.fa-list.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'assignments'}}")
-                i.fa.fa-sitemap.icon-large(class="menubar-icons")
-              a(href="{{pathFor 'students'}}")
-                i.fa.fa-users.icon-large(class="menubar-icons")
+            if currentUserIsAdmin
+              .nav-commands.center
+                li
+                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left {{isSelected ''}}") Dashboard
+                li
+                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left {{isSelected 'exchange'}}") Exchange
+                li
+                  a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left {{isSelected 'supervisor'}}") Supervisor
+                li
+                  a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left {{isSelected 'shiftlist'}}") Shiftlist
+                li
+                  a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left {{isSelected 'assignments'}}") Assignments
+                li
+                  a(href="{{pathFor 'students'}}", class="hvr-underline-from-left {{isSelected 'students'}}") Students
+                li
+                  a(href="{{pathFor 'users'}}", class="hvr-underline-from-left {{isSelected 'users'}}") User Rights
+            else
+              if currentUserIsSupervisor
+                .nav-commands.center
+                  a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left") Supervisor
+                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
+              else
+                .nav-commands.center
+                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
             li
-              input.validate(type='text', id="searchStudent")
-              i.fa.fa-search(style="display: inline; margin-left: 5px; margin-top: 10px;",class="accentColor")
+              input.validate(type='text', placeholder='Search a student',id="searchStudent")
               ul.collection
                 each candidate
                   li.collection-item(style='float:none;')
                     a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
-            li
-              a(class='waves-effect waves-light btn', id='logout') Logout
-
           else
             li
-              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}') Login
+              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:20px') Login
