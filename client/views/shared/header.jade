@@ -11,7 +11,7 @@ template(name='Header')
             if currentUserIsAdmin
               .nav-commands.center
                 li
-                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left {{isSelected 'dashboard'}}") Dashboard
+                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left {{isSelected ''}}") Dashboard
                 li
                   a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left {{isSelected 'exchange'}}") Exchange
                 li
