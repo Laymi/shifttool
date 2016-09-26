@@ -24,7 +24,7 @@ You find some example JSONs for the important collections below but for convenie
 So everything you have to do is to open the console and type:
 `Meteor.call('populateDatabase', N)` <br/> N = Amount of students and shifts to add <br/><br/>
 In order to create the first user open the console and type:
-`Meteor.call(‚createExampleUser‘)` <br/>
+`Meteor.call('createExampleUser')` <br/>
 Login credentials: <br/>
 email: 'test1337@test.test' <br/>
 password: 'test1234'
