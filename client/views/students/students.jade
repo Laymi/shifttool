@@ -43,13 +43,13 @@ template(name='Students')
               td
                 span(id="{{_id}}-last_name") {{last_name}}
               td
-                span(id="{{_id}}-last_name") {{mobile}}
-              td
                 span(id="{{_id}}-workload") {{workload}}
               td
                 span(id="{{_id}}-exemptionStatus") {{exemptionStatus}}
               td
                 span(id="{{_id}}-gender") {{gender}}
+              td
+                span(id="{{_id}}-action") {{action}}
               td
                 a(class='waves-effect waves-light btn deletebtn', name='{{_id}}') Delete
                 a(class='waves-effect waves-light btn editbtn', name='{{_id}}') Edit
