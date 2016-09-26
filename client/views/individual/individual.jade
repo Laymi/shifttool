@@ -6,7 +6,7 @@ template(name='Individual')
       table
         thead
           tr
-            th Info
+            th ID
             th Remarks
             th Start
             th End
@@ -22,8 +22,7 @@ template(name='Individual')
                     i.fa.fa-refresh
                   {{_id}}
               else
-                td {{_id}}
-              td {{info.info}}
+              td {{_id}}
               td {{info.remarks}}
               td {{formatDate info.start}}
               td {{formatDate info.end}}
