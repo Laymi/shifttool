@@ -11,6 +11,10 @@ Template.Header.helpers
   currentUserIsSupervisor: ->
     return Meteor.user()?.profile?.role == 'supervisor'
 
+  isSelected: (path) ->
+    if path == Router.current().originalUrl.split('/')[Router.current().originalUrl.split('/').length-1]
+      "isSelected"
+
 Template.Header.events
   'keyup input': (event, template) ->
     if event.target.value != ''

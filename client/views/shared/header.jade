@@ -11,19 +11,19 @@ template(name='Header')
             if currentUserIsAdmin
               .nav-commands.center
                 li
-                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left") Dashboard
+                  a(href="{{pathFor 'home'}}", class="hvr-underline-from-left {{isSelected 'dashboard'}}") Dashboard
                 li
-                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
+                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left {{isSelected 'exchange'}}") Exchange
                 li
-                  a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left") Supervisor
+                  a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left {{isSelected 'supervisor'}}") Supervisor
                 li
-                  a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left") Shiftlist
+                  a(href="{{pathFor 'shiftlist'}}", class="hvr-underline-from-left {{isSelected 'shiftlist'}}") Shiftlist
                 li
-                  a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left") Assignments
+                  a(href="{{pathFor 'assignments'}}", class="hvr-underline-from-left {{isSelected 'assignments'}}") Assignments
                 li
-                  a(href="{{pathFor 'students'}}", class="hvr-underline-from-left") Students
+                  a(href="{{pathFor 'students'}}", class="hvr-underline-from-left {{isSelected 'students'}}") Students
                 li
-                  a(href="{{pathFor 'users'}}", class="hvr-underline-from-left") User Rights
+                  a(href="{{pathFor 'users'}}", class="hvr-underline-from-left {{isSelected 'users'}}") User Rights
             else
               if currentUserIsSupervisor
                 .nav-commands.center
