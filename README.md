@@ -13,7 +13,7 @@ git clone https://github.com/Laymi/shifttool.git
 cd shifttool
 meteor
 ```
-For Windows(just don't)
+For Windows (just don't)
 ```
 https://install.meteor.com/windows
 Clone the git repository in some folder that you have RW permissions on
