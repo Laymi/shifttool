@@ -9,7 +9,7 @@ For OSX and Linux
 ```
 curl https://install.meteor.com/ | sh
 cd ~
-git clone https://github.com/Laymi/shifttool.git
+git clone https://github.com/Peschonaut/shifttool.git
 cd shifttool
 meteor
 ```
