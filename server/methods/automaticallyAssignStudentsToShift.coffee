@@ -20,11 +20,17 @@ Meteor.methods
         for alreadyAssignedShift in alreadyAssignedShifts
           oldShiftStartAsUNIX = alreadyAssignedShift.info.start.getTime()
           oldShiftEndAsUNIX = alreadyAssignedShift.info.start.getTime()
-          if potentialNewShiftStartAsUNIX > oldShiftStartAsUNIX && potentialNewShiftStartAsUNIX < oldShiftEndAsUNIX
+          if potentialNewShiftStartAsUNIX <= oldShiftStartAsUNIX && oldShiftEndAsUNIX <= potentialNewShiftEndAsUNIX
+            console.log 'r1', _id, shiftId
             return false
-          if potentialNewShiftEndAsUNIX > oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX < oldShiftEndAsUNIX
+          if oldShiftStartAsUNIX <= potentialNewShiftStartAsUNIX && potentialNewShiftStartAsUNIX <= oldShiftEndAsUNIX  && oldShiftEndAsUNIX <= potentialNewShiftEndAsUNIX
+            console.log 'r2', _id, shiftId, alreadyAssignedShift._id
             return false
-          if potentialNewShiftStartAsUNIX < oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX > oldShiftEndAsUNIX
+          if oldShiftStartAsUNIX <= potentialNewShiftStartAsUNIX && potentialNewShiftEndAsUNIX <= oldShiftEndAsUNIX
+            console.log 'r3', _id, shiftId
+            return false
+          if potentialNewShiftStartAsUNIX <= oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX >= oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX <= oldShiftEndAsUNIX
+            console.log 'r4', _id, shiftId
             return false
         return true
       getNextAvailableStudentForShift = (shiftId) ->
@@ -45,8 +51,8 @@ Meteor.methods
           if Shifts.findOne(shiftId).assignedStudents.indexOf(potentialFit._id) == -1
             # console.log 'The student with the lowest workload is:', potentialFit
             # Commented because we do not care about overlaps right now
-            # if userHasNoOverlapsWithThisShift(potentialFit._id, shiftId)
-            return potentialFit
+            if userHasNoOverlapsWithThisShift(potentialFit._id, shiftId)
+              return potentialFit
         throw new Meteor.Error 'Insufficient Students - a student can not be divided'
 
       if shiftId == '' || shiftId == undefined
@@ -54,7 +60,7 @@ Meteor.methods
       if studentN == '' || studentN == 0|| studentN == undefined || isNaN studentN
         throw new Meteor.Error 'studentN invalid'
 
-      # console.log 'validation passed'
+      console.log 'validation passed'
 
       for i in [0...studentN]
         # console.log 'in loop', i
@@ -67,7 +73,6 @@ Meteor.methods
         # console.log 'shiftDurationInHours', shiftDurationInHours
         currentWorkloadOfStudent = Students.findOne(nextStudent?._id)?.workload
         # console.log 'currentWorkloadOfStudent', currentWorkloadOfStudent
-        # console.log 'shiftId', shiftId
         if !currentWorkloadOfStudent
           currentWorkloadOfStudent = 0
         # if currentWorkloadOfStudent < 0
@@ -82,8 +87,10 @@ Meteor.methods
 
         # console.log 'shift.info.end', shift.info.end
         # console.log 'shift.info.start', shift.info.start
-        # console.log 'shiftDuration', shiftDuration
-        # console.log 'shiftDurationInHours', shiftDurationInHours
+        if shiftDuration < 0
+          console.log 'shiftId', shiftId
+          console.log 'shiftDuration', shiftDuration
+          console.log 'shiftDurationInHours', shiftDurationInHours
 
   automaticallyAssignStudentsToShifts: ->
     if Meteor.users.findOne(Meteor.userId()).profile.role == 'admin'

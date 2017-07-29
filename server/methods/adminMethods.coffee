@@ -47,3 +47,24 @@ Meteor.methods
 
         Shifts.update shift._id, $set: info:info
 
+  detectOverlaps: ->
+    allUsers = Meteor.users.find().fetch()
+    _.each allUsers, (user) ->
+      shiftsOfUser = Shifts.find("assignedStudents":user._id).fetch()
+      _.each shiftsOfUser, (shift) ->
+        _.each shiftsOfUser, (secondShift) ->
+          potentialNewShift = secondShift
+
+          potentialNewShiftStartAsUNIX = potentialNewShift.info.start.getTime()
+          # console.log 'potentialNewShiftStartAsUNIX', potentialNewShiftStartAsUNIX
+          potentialNewShiftEndAsUNIX = potentialNewShift.info.end.getTime()
+          # console.log 'potentialNewShiftEndAsUNIX', potentialNewShiftEndAsUNIX
+
+          oldShiftStartAsUNIX = shift.info.start.getTime()
+          oldShiftEndAsUNIX = shift.info.start.getTime()
+          if potentialNewShiftStartAsUNIX >= oldShiftStartAsUNIX && potentialNewShiftStartAsUNIX <= oldShiftEndAsUNIX
+            console.log 'overlap', user._id
+          if potentialNewShiftEndAsUNIX >= oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX <= oldShiftEndAsUNIX
+            console.log 'overlap', user._id
+          if potentialNewShiftStartAsUNIX <= oldShiftStartAsUNIX && potentialNewShiftEndAsUNIX >= oldShiftEndAsUNIX
+            console.log 'overlap', user._id

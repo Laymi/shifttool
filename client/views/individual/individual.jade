@@ -7,12 +7,14 @@ template(name='Individual')
         thead
           tr
             th ID
+            th Info
             th Remarks
             th Start
             th End
             th Supervisor
             th Contact
             th Location
+            th Transport
         each shifts
           tbody
             tr
@@ -23,9 +25,11 @@ template(name='Individual')
                   {{_id}}
               else
               td {{_id}}
+              td {{info.info}}
               td {{info.remarks}}
               td {{formatDate info.start}}
               td {{formatDate info.end}}
               td {{info.supervisor}}
               td {{info.supervisorContact}}
               td {{info.location}}
+              th {{info.transport}}
