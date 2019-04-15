@@ -37,7 +37,7 @@ Template.Home.helpers
     # console.log 'currentUsersEmail', currentUsersEmail
     # console.log 'currentStudentsEmail', currentStudentsEmail
 
-    return currentUsersEmail.toLowerCase() == currentStudentsEmail.toLowerCase()
+    return (currentUsersEmail && currentUsersEmail.toLowerCase()) == (currentStudentsEmail && currentStudentsEmail.toLowerCase())
 
 Template.Home.events
   "click #listShiftForExchange": (event) ->
