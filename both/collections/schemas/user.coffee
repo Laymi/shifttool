@@ -15,6 +15,14 @@ Schemas.User = new SimpleSchema
     type: Object
     optional: true
     blackbox: true
+  nameIDFormat:
+    type: String
+    optional: true
+    blackbox: true
+  nameID:
+    type: String
+    optional: true
+    blackbox: true
   # Force value to be current date (on server) upon insert
   # and prevent updates thereafter.
   createdAt:

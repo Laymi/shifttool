@@ -39,3 +39,4 @@ standard-minifier-js
 shell-server
 dynamic-import
 underscore
+meteor-accounts-shibboleth
