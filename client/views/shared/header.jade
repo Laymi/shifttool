@@ -12,8 +12,8 @@ template(name='Header')
               .nav-commands.center
                 li
                   a(href="{{pathFor 'home'}}", class="hvr-underline-from-left {{isSelected ''}}") Dashboard
-                li
-                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left {{isSelected 'exchange'}}") Exchange
+                //li
+                  //a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left {{isSelected 'exchange'}}") Exchange
                 li
                   a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left {{isSelected 'supervisor'}}") Supervisor
                 li
@@ -28,10 +28,10 @@ template(name='Header')
               if currentUserIsSupervisor
                 .nav-commands.center
                   a(href="{{pathFor 'supervisor'}}", class="hvr-underline-from-left") Supervisor
-                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
-              else
-                .nav-commands.center
-                  a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
+                  //a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
+              //else
+                //.nav-commands.center
+                  //a(href="{{pathFor 'exchange'}}", class="hvr-underline-from-left") Exchange
             li
               input.validate(type='text', placeholder='Search a student',id="searchStudent")
               ul.collection
@@ -40,4 +40,4 @@ template(name='Header')
                     a(href="{{pathFor 'individual'}}") {{first_name}} {{last_name}}
           else
             li
-              a(class='waves-effect waves-light btn', id='login', href='{{pathFor "login"}}' style='margin-right:20px') Login
+              a(class='waves-effect waves-light btn', id='login', style='margin-right:20px') Login

@@ -26,3 +26,14 @@ Template.Header.events
 
   'click #logout': ->
     Meteor.logout()
+
+  'click #login': ->
+    provider = 'shibboleth-idp'
+    Meteor.loginWithSaml { provider: provider }, (err, result) ->
+      if err
+        console.log err
+      else
+        location = '/'
+      return
+    #OR: Legacy/Development accounts via static route:
+    #location = "/login"
