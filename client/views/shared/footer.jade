@@ -5,8 +5,8 @@ template(name='Footer')
         a(href='{{pathFor "imprint"}}' class='text') Imprint |
         a(href='{{pathFor "privacy"}}' class='text') Privacy |
         a(href='{{pathFor "terms"}}' class='text') Terms |
-        span(class='text') © {{year}} Daniel Pesch | WHU | 
-        span(class='text' style="") Contact: 
-          a(href="mailto:Laura.Meyer-Hoeper@whu.edu" style="color: #dc4f49") Laura.Meyer-Hoeper@whu.edu |
+        span(class='text') © {{year}} Daniel Pesch | WHU |
+        span(class='text' style="") Contact:
+          a(href="mailto:F.Zitzelsberger@whu.edu" style="color: #dc4f49") Florian Zitzelsberger
         if currentUser
-          a(href='{{pathFor "login"}}' id='logout' class='text' style='color:#dc4f49') Logout
+          a(id='logout' class='text' style='color:#dc4f49') | Logout
