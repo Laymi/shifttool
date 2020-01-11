@@ -36,13 +36,8 @@ Template.Individual.events
     shiftId = event.currentTarget.name
     # console.log 'shiftId', shiftId
 
-    #I hate this stupid package... look for a new one later or use leanModal
-    MaterializeModal.confirm
-      title: 'Initialize shift exchange'
-      message: 'Do you want to list your shift in the shift exchange?'
-      callback: (yesNo) ->
-          if yesNo
-              Meteor.call "listShiftForExchange", shiftId, Router?.current()?.params?._id
-              Router.go('exchange');
-          else
-              Materialize.toast("Too bad")
+    if confirm("Do you want to list your shift in the shift exchange?")
+      Meteor.call "listShiftForExchange", shiftId, Router?.current()?.params?._id
+      Router.go('exchange');
+    else
+      Materialize.toast("Too bad")

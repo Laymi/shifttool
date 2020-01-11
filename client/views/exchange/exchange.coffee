@@ -1,10 +1,5 @@
 Meteor.subscribe 'allShifts'
 Template.Exchange.helpers
-  initLeanModal: ->
-    instance = Template.instance()
-    Meteor.defer ->
-      instance.$('.modal-trigger').leanModal()
-
   thisUsersShifts: ->
     currentUsersEmail = Meteor.users.findOne(Meteor.userId())?.emails?[0]?.address
     # console.log 'currentUsersEmail', currentUsersEmail
@@ -34,7 +29,7 @@ Template.Exchange.events
     # console.log 'forShift: ', Session.get('shiftToOfferFor')
     # console.log 'offeredShift: ', event.target.name
 
-    Meteor.call 'initializeShiftTrade', Session.get('shiftToOfferFor'), event.target.name
+    Meteor.call 'initializeShiftTrade', Meteor.userId(), Session.get('shiftToOfferFor'), event.target.name
 
     # console.log 'location.reload()'
 
@@ -44,3 +39,4 @@ Template.Exchange.events
   "click #makeAnOffer": (event) ->
     shiftId = event.target.name
     Session.set('shiftToOfferFor', shiftId)
+    $('#answer-survey-options-modal.modal').show()
